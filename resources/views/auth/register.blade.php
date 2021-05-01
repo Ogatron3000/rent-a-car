@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center my-4">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
@@ -19,6 +19,52 @@
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="country" class="form-control" name="country_id" required>
+                                    @foreach($countries as $country)
+                                        <option {{ $country->id === old('$country') ? 'selected' : '' }} value={{ $country->id }}>{{ $country->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('country')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="passport" class="col-md-4 col-form-label text-md-right">{{ __('Passport') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="passport" type="text" class="form-control @error('passport') is-invalid @enderror" name="passport" value="{{ old('passport') }}" required autocomplete="passport">
+
+                                @error('passport')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
+
+                                @error('phone')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror

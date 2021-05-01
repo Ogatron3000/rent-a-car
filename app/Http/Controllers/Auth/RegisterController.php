@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -23,6 +24,17 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showRegistrationForm()
+    {
+        $countries = Country::all();
+        return view('auth.register', compact('countries'));
+    }
 
     /**
      * Where to redirect users after registration.
@@ -51,6 +63,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'country_id' => ['required'],
+            'passport' => ['required', 'string', 'unique:users'],
+            'phone' => ['string', 'numeric'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -66,6 +81,9 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'country_id' => $data['country_id'],
+            'passport' => $data['passport'],
+            'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
