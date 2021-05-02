@@ -28,9 +28,9 @@
             </nav>
         </div>
         <div id="layoutSidenav_content">
-            <main>
 
-            </main>
+            @yield('dashboard-content')
+
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid text-center small">
                     <div class="text-muted">Copyright &copy; Your Website 2021</div>

@@ -26,16 +26,16 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
+                            <label for="country_id" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
 
                             <div class="col-md-6">
-                                <select id="country" class="form-control" name="country_id" required>
+                                <select id="country_id" class="form-control" name="country_id" required>
                                     @foreach($countries as $country)
                                         <option {{ $country->id === old('$country') ? 'selected' : '' }} value={{ $country->id }}>{{ $country->name }}</option>
                                     @endforeach
                                 </select>
 
-                                @error('country')
+                                @error('country_id')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
