@@ -17,31 +17,54 @@
                 <div class="col-md-8"><img class="img-fluid" src="{{ asset($car->photo) }}" alt="..." /></div>
                 <div class="col-md-4">
                     <h3 class="my-3">Car Details</h3>
-                    <ul>
-                        <li>{{ $car->model }}</li>
-                        <li>{{ $car->registration }}</li>
-                        <li>{{ $car->year }}</li>
-                        <li>{{ $car->carClass->name }}</li>
-                        <li>{{ $car->seats }}</li>
-                        <li>{{ $car->price }}</li>
-                    </ul>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <th>Model</th>
+                                    <td>{{ $car->model }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Registration</th>
+                                    <td>{{ $car->registration }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Year</th>
+                                    <td>{{ $car->year }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Class</th>
+                                    <td>{{ $car->carClass->name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Seats</th>
+                                    <td>{{ $car->seats }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Price</th>
+                                    <td>{{ $car->price }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{ $car->path() . '/edit' }}">
+                                            <button class="btn btn-primary">Edit</button>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <form method="POST" action="{{ $car->path() }}" class="mb-2">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <h3 class="my-3">Notes</h3>
                     <p>{{ $car->notes }}</p>
                 </div>
             </div>
         </div>
     </section>
-    {{--<div>{{ $car->model }}</div>--}}
-    {{--<div>{{ $car->registration }}</div>--}}
-    {{--<div>{{ $car->year }}</div>--}}
-    {{--<div>{{ $car->carClass->name }}</div>--}}
-    {{--<img src="{{ asset($car->photo) }}" style="height: 400px; width: 700px" />--}}
-    {{--<div>{{ $car->seats }}</div>--}}
-    {{--<div>{{ $car->price }}</div>--}}
-    {{--<div>{{ $car->notes }}</div>--}}
-    {{--<form method="POST" action="{{ $car->path() }}">--}}
-    {{--    @method('DELETE')--}}
-    {{--    @csrf--}}
-    {{--    <button>del</button>--}}
-    {{--</form>--}}
 @endsection
