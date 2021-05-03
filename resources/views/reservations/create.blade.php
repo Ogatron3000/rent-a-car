@@ -5,37 +5,23 @@
         <div class="row justify-content-center my-5">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Add New Client') }}</div>
+                    <div class="card-header">{{ __('Add New Reservation') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('clients.store') }}">
+                        <form method="POST" action="{{ route('reservations.store') }}">
                             @csrf
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                <label for="client_id" class="col-md-4 col-form-label text-md-right">{{ __('Client') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                    @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="country_id" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
-
-                                <div class="col-md-6">
-                                    <select id="country_id" class="form-control" name="country_id" required>
-                                        @foreach($countries as $country)
-                                            <option {{ $country->id === old('country') ? 'selected' : '' }} value={{ $country->id }}>{{ $country->name }}</option>
+                                    <select id="client_id" class="form-control" name="client_id" required>
+                                        @foreach($clients as $client)
+                                            <option {{ $client->id === old('client_id') ? 'selected' : '' }} value={{ $client->id }}>{{ $client->name }}</option>
                                         @endforeach
                                     </select>
 
-                                    @error('country_id')
+                                    @error('client_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -44,88 +30,98 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="passport" class="col-md-4 col-form-label text-md-right">{{ __('Passport') }}</label>
+                                <label for="car_id" class="col-md-4 col-form-label text-md-right">{{ __('Car') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="passport" type="text" class="form-control @error('passport') is-invalid @enderror" name="passport" value="{{ old('passport') }}" required autocomplete="passport">
-
-                                    @error('passport')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
-
-                                    @error('phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="first_reservation" class="col-md-4 col-form-label text-md-right">{{ __('First Reservation') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="first_reservation" type="date" class="form-control @error('first_reservation') is-invalid @enderror" name="first_reservation" value="{{ old('first_reservation') }}" required autocomplete="first_reservation">
-
-                                    @error('first_reservation')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="last_reservation" class="col-md-4 col-form-label text-md-right">{{ __('Last Reservation') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="last_reservation" type="date" class="form-control @error('last_reservation') is-invalid @enderror" name="last_reservation" value="{{ old('last_reservation') }}" required autocomplete="last_reservation">
-
-                                    @error('last_reservation')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="registered" class="col-md-4 col-form-label text-md-right">{{ __('Registered') }}</label>
-
-                                <div class="col-md-6">
-                                    <select class="form-control" name="registered" required>
-                                        @for($val = 0; $val <= 1; $val++)
-                                            <option value={{ $val }}>
-                                                {{ $val === 0 ? 'No' : 'Yes' }}
-                                            </option>
-                                        @endfor
+                                    <select id="car_id" class="form-control" name="car_id" required>
+                                        @foreach($cars as $car)
+                                            <option {{ $car->id === old('car_id') ? 'selected' : '' }} value={{ $car->id }}>{{ $car->model }}</option>
+                                        @endforeach
                                     </select>
 
-                                    @error('registered')
+                                    @error('car_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="from_date" class="col-md-4 col-form-label text-md-right">{{ __('From Date') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="from_date" type="date" class="form-control @error('from_date') is-invalid @enderror" name="from_date" value="{{ old('from_date') }}" required autocomplete="from_date">
+
+                                    @error('from_date')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="to_date" class="col-md-4 col-form-label text-md-right">{{ __('To Date') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="to_date" type="date" class="form-control @error('to_date') is-invalid @enderror" name="to_date" value="{{ old('to_date') }}" required autocomplete="to_date">
+
+                                    @error('to_date')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="start_location_id" class="col-md-4 col-form-label text-md-right">{{ __('Start Location') }}</label>
+
+                                <div class="col-md-6">
+                                    <select id="start_location_id" class="form-control" name="start_location_id" required>
+                                        @foreach($locations as $location)
+                                            <option {{ $location->id === old('start_location_id') ? 'selected' : '' }} value={{ $location->id }}>{{ $location->name }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('start_location_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="end_location_id" class="col-md-4 col-form-label text-md-right">{{ __('End Location') }}</label>
+
+                                <div class="col-md-6">
+                                    <select id="end_location_id" class="form-control" name="end_location_id" required>
+                                        @foreach($locations as $location)
+                                            <option {{ $location->id === old('end_location_id') ? 'selected' : '' }} value={{ $location->id }}>{{ $location->name }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('end_location_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="equipment_ids" class="col-md-4 col-form-label text-md-right">{{ __('Equipment') }}</label>
+
+                                <div class="col-md-6">
+                                    <select id="equipment_ids" class="form-control" name="equipment_ids[]" multiple>
+                                        @foreach($equipment as $item)
+                                            <option value={{ $item->id }}>{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('equipment_ids')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
