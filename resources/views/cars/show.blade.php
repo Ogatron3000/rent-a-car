@@ -47,14 +47,14 @@
                                 <tr>
                                     <td>
                                         <a href="{{ $car->path() . '/edit' }}">
-                                            <button class="btn btn-primary">Edit</button>
+                                            <button class="btn btn-sm btn-primary">Edit</button>
                                         </a>
                                     </td>
                                     <td>
                                         <form method="POST" action="{{ $car->path() }}" class="mb-2">
                                             @method('DELETE')
                                             @csrf
-                                            <button class="btn btn-danger">Delete</button>
+                                            <button class="btn btn-sm btn-danger">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

@@ -5,26 +5,20 @@
         <div class="row justify-content-center my-5">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Edit Car') }}</div>
+                    <div class="card-header">{{ __('Edit Client') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ $car->path() }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ $client->path() }}">
                             @method("PUT")
                             @csrf
 
                             <div class="form-group row">
-                                <div class="col-md-6 offset-4">
-                                    <img src="{{ asset($car->photo) }}" class="img-fluid rounded" />
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="model" class="col-md-4 col-form-label text-md-right">{{ __('Model') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="model" type="text" class="form-control @error('model') is-invalid @enderror" name="model" value="{{ $car->model }}" required autocomplete="model" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $client->name }}" required autocomplete="name" autofocus>
 
-                                    @error('model')
+                                    @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -33,50 +27,16 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="registration" class="col-md-4 col-form-label text-md-right">{{ __('Registration') }}</label>
+                                <label for="country_id" class="col-md-4 col-form-label text-md-right">{{ __('Class') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="registration" type="text" class="form-control @error('registration') is-invalid @enderror" name="registration" value="{{ $car->registration }}" required autocomplete="registration">
-
-                                    @error('registration')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="year" class="col-md-4 col-form-label text-md-right">{{ __('Year') }}</label>
-
-                                <div class="col-md-6">
-                                    <select class="form-control" name="year" required>
-                                        @for($year = (int)date('Y'); 1900 <= $year; $year--)
-                                            <option {{ $year === $car->year ? 'selected' : '' }} value={{ $year }}>
-                                                {{ $year }}
-                                            </option>
-                                        @endfor
-                                    </select>
-
-                                    @error('year')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="car_class_id" class="col-md-4 col-form-label text-md-right">{{ __('Class') }}</label>
-
-                                <div class="col-md-6">
-                                    <select id="car_class_id" class="form-control" name="car_class_id" required>
-                                        @foreach($carClasses as $class)
-                                            <option {{ $class->id === $car->car_class_id ? 'selected' : '' }} value={{ $class->id }}>{{ $class->name }}</option>
+                                    <select id="country_id" class="form-control" name="country_id" required>
+                                        @foreach($countries as $country)
+                                            <option {{ $country->id === $client->country_id ? 'selected' : '' }} value={{ $country->id }}>{{ $country->name }}</option>
                                         @endforeach
                                     </select>
 
-                                    @error('car_class_id')
+                                    @error('country_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -85,55 +45,88 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="seats" class="col-md-4 col-form-label text-md-right">{{ __('Seats') }}</label>
+                                <label for="passport" class="col-md-4 col-form-label text-md-right">{{ __('Passport') }}</label>
 
                                 <div class="col-md-6">
-                                    <select class="form-control" name="seats" required>
-                                        @for($seats = 2; $seats <= 6; $seats++)
-                                            <option {{ $seats === $car->seats ? 'selected' : '' }} value={{ $seats }}>
-                                                {{ $seats }}
+                                    <input id="passport" type="text" class="form-control @error('passport') is-invalid @enderror" name="passport" value="{{ $client->passport }}" required autocomplete="passport" autofocus>
+
+                                    @error('passport')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail Address') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $client->email }}" required autocomplete="email" autofocus>
+
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $client->phone }}" required autocomplete="phone" autofocus>
+
+                                    @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="first_reservation" class="col-md-4 col-form-label text-md-right">{{ __('First Reservation') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="first_reservation" type="text" class="form-control @error('first_reservation') is-invalid @enderror" name="first_reservation" value="{{ $client->first_reservation }}" required autocomplete="first_reservation" autofocus>
+
+                                    @error('first_reservation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="last_reservation" class="col-md-4 col-form-label text-md-right">{{ __('Last Reservation') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="last_reservation" type="text" class="form-control @error('last_reservation') is-invalid @enderror" name="last_reservation" value="{{ $client->last_reservation }}" required autocomplete="last_reservation" autofocus>
+
+                                    @error('last_reservation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="registered" class="col-md-4 col-form-label text-md-right">{{ __('Registered') }}</label>
+
+                                <div class="col-md-6">
+                                    <select class="form-control" name="registered" required>
+                                        @for($val = 0; $val <= 1; $val++)
+                                            <option {{ $val === $client->registered ? 'selected' : '' }} value={{ $val }}>
+                                                {{ $val === 0 ? 'No' : 'Yes' }}
                                             </option>
                                         @endfor
                                     </select>
 
-                                    @error('seats')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
-
-                                <div class="col-md-6">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">€</div>
-                                        </div>
-                                        <input id="price" type="number" min="0.01" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $car->price }}" required autocomplete="price">
-                                    </div>
-
-
-                                    @error('price')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="photo" class="col-md-4 col-form-label text-md-right">{{ __('Photo') }}</label>
-
-                                <div class="col-md-6">
-                                    <div class="custom-file">
-                                        <input id="photo" type="file" class="custom-file-input @error('photo') is-invalid @enderror" name="photo">
-                                        <label class="custom-file-label" for="photo">Choose file</label>
-                                    </div>
-
-                                    @error('photo')
+                                    @error('registered')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -145,7 +138,7 @@
                                 <label for="notes" class="col-md-4 col-form-label text-md-right">{{ __('Notes') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="notes" type="text" class="form-control @error('notes') is-invalid @enderror" name="notes">{{ $car->notes }}</textarea>
+                                    <textarea id="notes" type="text" class="form-control @error('notes') is-invalid @enderror" name="notes">{{ $client->notes }}</textarea>
 
                                     @error('notes')
                                     <span class="invalid-feedback" role="alert">

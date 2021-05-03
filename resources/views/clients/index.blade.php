@@ -16,37 +16,39 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>Model</th>
-                            <th>Registration</th>
-                            <th>Year</th>
-                            <th>Class</th>
-                            <th>Seats</th>
-                            <th>Price</th>
-                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Country</th>
+                            <th>Passport</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>First Reservation</th>
+                            <th>Last Reservation</th>
+                            <th>Registered</th>
                             <th>Notes</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($cars as $car)
+                        @foreach($clients as $client)
                             <tr>
                                 <td>
-                                    <a href="{{ $car->path() }}">
-                                        {{ $car->model }}
+                                    <a href="{{ $client->path() }}">
+                                        {{ $client->name }}
                                     </a>
                                 </td>
-                                <td>{{ $car->registration }}</td>
-                                <td>{{ $car->year }}</td>
-                                <td>{{ $car->carClass->name }}</td>
-                                <td>{{ $car->seats }}</td>
-                                <td>{{ $car->price }}</td>
-                                <td><img src="{{ asset($car->photo) }}" style="height: 100px; width: 175px" /></td>
-                                <td>{{ $car->notes }}</td>
+                                <td>{{ $client->country->name }}</td>
+                                <td>{{ $client->passport }}</td>
+                                <td>{{ $client->phone }}</td>
+                                <td>{{ $client->email }}</td>
+                                <td>{{ $client->first_reservation }}</td>
+                                <td>{{ $client->last_reservation }}</td>
+                                <td>{{ $client->registered }}</td>
+                                <td>{{ $client->notes }}</td>
                                 <td>
-                                    <a href="{{ $car->path() . '/edit' }}">
-                                        <button class="btn btn-sm btn-warning">Edit</button>
+                                    <a href="{{ $client->path() . '/edit' }}">
+                                        <button class="btn btn-sm btn-primary">Edit</button>
                                     </a>
-                                    <form method="POST" action="{{ $car->path() }}" class="mb-2">
+                                    <form method="POST" action="{{ $client->path() }}" class="mb-2">
                                         @method('DELETE')
                                         @csrf
                                         <button class="btn btn-sm btn-danger">Del</button>
