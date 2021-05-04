@@ -15,8 +15,8 @@ class CreateEquipmentReservationTable extends Migration
     {
         Schema::create('equipment_reservation', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('equipment_id')->constrained();
-            $table->foreignId('reservation_id')->constrained();
+            $table->foreignId('equipment_id')->constrained()->onDelete('cascade');
+            $table->foreignId('reservation_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
