@@ -10,6 +10,7 @@ use App\Models\Equipment;
 use App\Models\Location;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class ReservationController extends Controller
 {
@@ -33,9 +34,12 @@ class ReservationController extends Controller
 
     public function store(StoreReservationRequest $request)
     {
-        $reservation = Reservation::create($request->validated());
+        $validated = $request->validated();
 
-        $reservation->equipment()->detach();
+        $validated['price'] = $this->calculatePrice($validated, $request->get('equipment_ids', []));
+
+        $reservation = Reservation::create($validated);
+
         $reservation->equipment()->attach($request->equipment_ids);
 
         return redirect($reservation->path());
@@ -58,7 +62,11 @@ class ReservationController extends Controller
 
     public function update(UpdateReservationRequest $request, Reservation $reservation)
     {
-        $reservation->update($request->validated());
+        $validated = $request->validated();
+
+        $validated['price'] = $this->calculatePrice($validated, $request->get('equipment_ids', []));
+
+        $reservation->update($validated);
 
         $reservation->equipment()->detach();
         $reservation->equipment()->attach($request->equipment_ids);
@@ -71,5 +79,20 @@ class ReservationController extends Controller
         $reservation->delete();
 
         return redirect(route('reservations.index'));
+    }
+
+    protected function calculatePrice($validated, $equipment_ids)
+    {
+        // calculate price per day
+        $days = Carbon::parse($validated['from_date'])->diffInDays($validated['to_date']);
+        $carPrice = Car::findOrFail($validated['car_id'])->price;
+        $price = $days * $carPrice;
+
+        // add equipment price to total price
+        foreach ($equipment_ids as $id) {
+            $price += Equipment::findOrFail($id)->price;
+        }
+
+        return $price;
     }
 }
