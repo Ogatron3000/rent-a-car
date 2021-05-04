@@ -19,8 +19,8 @@ class CreateReservationsTable extends Migration
             $table->foreignId('car_id')->constrained();
             $table->date('from_date');
             $table->date('to_date');
-            $table->foreignId('start_location_id')->constrained();
-            $table->foreignId('end_location_id')->constrained();
+            $table->foreignId('start_location_id')->references('id')->on('locations');
+            $table->foreignId('end_location_id')->references('id')->on('locations');
             $table->integer('price');
             $table->string('notes')->nullable();
             $table->timestamps();

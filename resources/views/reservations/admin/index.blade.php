@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
-@section('content')
+@section('dashboard-content')
     <div class="container-fluid">
         <h1 class="mt-4">Dashboard</h1>
         <ol class="breadcrumb mb-4">
@@ -16,6 +16,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
+                            <th>Client</th>
                             <th>Car</th>
                             <th>From</th>
                             <th>To</th>
@@ -23,12 +24,18 @@
                             <th>End</th>
                             <th>Equipment</th>
                             <th>Price</th>
+                            <th>Notes</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($reservations as $reservation)
                             <tr>
+                                <td>
+                                    <a href="{{ $reservation->client->path() }}">
+                                        {{ $reservation->client->name }}
+                                    </a>
+                                </td>
                                 <td>
                                     <a href="{{ $reservation->car->path() }}">
                                         {{ $reservation->car->model }}
@@ -46,11 +53,12 @@
                                     </ul>
                                 </td>
                                 <td>{{ $reservation->price }}</td>
+                                <td>{{ $reservation->notes }}</td>
                                 <td>
-                                    <a href="{{ $reservation->path2() . '/edit' }}">
+                                    <a href="{{ $reservation->path() . '/edit' }}">
                                         <button class="btn btn-sm btn-warning">Edit</button>
                                     </a>
-                                    <form method="POST" action="{{ $reservation->path2() }}" class="mb-2">
+                                    <form method="POST" action="{{ $reservation->path() }}" class="mb-2">
                                         @method('DELETE')
                                         @csrf
                                         <button class="btn btn-sm btn-danger">Del</button>

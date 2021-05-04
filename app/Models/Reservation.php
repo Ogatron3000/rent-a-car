@@ -13,7 +13,12 @@ class Reservation extends Model
 
     public function path()
     {
-        return '/admin/dashboard/reservations/' . $this->id;
+        return '/admin/reservations/' . $this->id;
+    }
+
+    public function path2()
+    {
+        return '/reservations/' . $this->id;
     }
 
     public function client()

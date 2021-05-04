@@ -9,7 +9,7 @@
                 <small>Subheading</small>
             </h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="{{ route('cars.index') }}">Cars</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.cars.index') }}">Cars</a></li>
                 <li class="breadcrumb-item active">{{ $car->model }}</li>
             </ol>
             <!-- Portfolio Item Row-->

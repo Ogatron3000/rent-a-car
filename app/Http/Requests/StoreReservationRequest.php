@@ -24,7 +24,6 @@ class StoreReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'client_id' => ['required'],
             'car_id' => ['required'],
             'from_date' => ['required', 'date'],
             'to_date' => ['required', 'date'],

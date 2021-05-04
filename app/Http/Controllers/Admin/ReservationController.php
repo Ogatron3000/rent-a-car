@@ -1,35 +1,36 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreReservationRequest;
-use App\Http\Requests\UpdateReservationRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreReservationRequest;
+use App\Http\Requests\Admin\UpdateReservationRequest;
 use App\Models\Car;
 use App\Models\Client;
 use App\Models\Equipment;
 use App\Models\Location;
 use App\Models\Reservation;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class ReservationController extends Controller
 {
 
     public function index()
     {
-        $client = Client::where('user_id', auth()->id())->first();
-        $reservations = Reservation::where('client_id', $client->id ?? null)->paginate(10);
+        $reservations = Reservation::paginate(10);
 
-        return view('reservations.index', compact('reservations'));
+        return view('reservations.admin.index', compact('reservations'));
     }
 
     public function create()
     {
+        $clients = Client::all();
         $cars = Car::all();
         $locations = Location::all();
         $equipment = Equipment::all();
 
-        return view('reservations.create', compact('cars', 'locations', 'equipment'));
+        return view('reservations.admin.create', compact('clients', 'cars', 'locations', 'equipment'));
     }
 
     public function store(StoreReservationRequest $request)
@@ -38,63 +39,47 @@ class ReservationController extends Controller
 
         $validated['price'] = $this->calculatePrice($validated, $request->get('equipment_ids', []));
 
-        $client = Client::where('user_id', auth()->id())->first();
-        if ( ! $client) {
-            $client = $this->createClient();
-        }
-        $validated['client_id'] = $client->id;
-
         $reservation = Reservation::create($validated);
 
         $reservation->equipment()->attach($request->equipment_ids);
 
-        return redirect($reservation->path2());
+        return redirect($reservation->path());
     }
 
     public function show(Reservation $reservation)
     {
-        $this->authorize('manage', $reservation);
-
-        return view('reservations.show', compact('reservation'));
+        return view('reservations.admin.show', compact('reservation'));
     }
 
     public function edit(Reservation $reservation)
     {
-        $this->authorize('manage', $reservation);
-
+        $clients = Client::all();
         $cars = Car::all();
         $locations = Location::all();
         $equipment = Equipment::all();
 
-        return view('reservations.edit', compact('reservation', 'cars', 'locations', 'equipment'));
+        return view('reservations.admin.edit', compact('reservation', 'clients', 'cars', 'locations', 'equipment'));
     }
 
     public function update(UpdateReservationRequest $request, Reservation $reservation)
     {
-        $this->authorize('manage', $reservation);
-
         $validated = $request->validated();
 
         $validated['price'] = $this->calculatePrice($validated, $request->get('equipment_ids', []));
-
-        $client = Client::where('user_id', auth()->id())->first();
-        $validated['client_id'] = $client->id;
 
         $reservation->update($validated);
 
         $reservation->equipment()->detach();
         $reservation->equipment()->attach($request->equipment_ids);
 
-        return redirect($reservation->path2());
+        return redirect($reservation->path());
     }
 
     public function destroy(Reservation $reservation)
     {
-        $this->authorize('manage', $reservation);
-
         $reservation->delete();
 
-        return redirect(route('reservations.index'));
+        return redirect(route('reservations.admin.index'));
     }
 
     protected function calculatePrice($validated, $equipment_ids)
@@ -110,21 +95,5 @@ class ReservationController extends Controller
         }
 
         return $price;
-    }
-
-    protected function createClient()
-    {
-        $user = auth()->user();
-        return Client::create([
-            'name' => $user->name,
-            'country_id' => $user->country_id,
-            'passport' => $user->passport,
-            'phone' => $user->phone,
-            'email' => $user->email,
-            'first_reservation' => Carbon::now()->toDateString(),
-            'last_reservation' => Carbon::now()->toDateString(),
-            'user_id' => $user->id,
-            'notes' => null
-        ]);
     }
 }

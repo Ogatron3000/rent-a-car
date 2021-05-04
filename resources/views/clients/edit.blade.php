@@ -114,25 +114,25 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="registered" class="col-md-4 col-form-label text-md-right">{{ __('Registered') }}</label>
+                            {{--<div class="form-group row">--}}
+                            {{--    <label for="registered" class="col-md-4 col-form-label text-md-right">{{ __('Registered') }}</label>--}}
 
-                                <div class="col-md-6">
-                                    <select class="form-control" name="registered" required>
-                                        @for($val = 0; $val <= 1; $val++)
-                                            <option {{ $val === $client->registered ? 'selected' : '' }} value={{ $val }}>
-                                                {{ $val === 0 ? 'No' : 'Yes' }}
-                                            </option>
-                                        @endfor
-                                    </select>
+                            {{--    <div class="col-md-6">--}}
+                            {{--        <select class="form-control" name="registered" required>--}}
+                            {{--            @for($val = 0; $val <= 1; $val++)--}}
+                            {{--                <option {{ $val === $client->registered ? 'selected' : '' }} value={{ $val }}>--}}
+                            {{--                    {{ $val === 0 ? 'No' : 'Yes' }}--}}
+                            {{--                </option>--}}
+                            {{--            @endfor--}}
+                            {{--        </select>--}}
 
-                                    @error('registered')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
+                            {{--        @error('registered')--}}
+                            {{--        <span class="invalid-feedback" role="alert">--}}
+                            {{--            <strong>{{ $message }}</strong>--}}
+                            {{--        </span>--}}
+                            {{--        @enderror--}}
+                            {{--    </div>--}}
+                            {{--</div>--}}
 
                             <div class="form-group row">
                                 <label for="notes" class="col-md-4 col-form-label text-md-right">{{ __('Notes') }}</label>

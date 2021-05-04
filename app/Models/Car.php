@@ -13,7 +13,7 @@ class Car extends Model
 
     public function path()
     {
-        return '/admin/dashboard/cars/' . $this->id;
+        return '/admin/cars/' . $this->id;
     }
 
     public function carClass()

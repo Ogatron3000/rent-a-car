@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateReservationRequest extends FormRequest
+class StoreReservationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,7 @@ class UpdateReservationRequest extends FormRequest
     public function rules()
     {
         return [
+            'client_id' => ['required'],
             'car_id' => ['required'],
             'from_date' => ['required', 'date'],
             'to_date' => ['required', 'date'],

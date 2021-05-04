@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreClientRequest;
-use App\Http\Requests\UpdateClientRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreClientRequest;
+use App\Http\Requests\Admin\UpdateClientRequest;
 use App\Models\Client;
 use App\Models\Country;
 use Illuminate\Http\Request;

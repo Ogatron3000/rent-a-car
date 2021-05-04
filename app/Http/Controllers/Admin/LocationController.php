@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Equipment;
+use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
-class EquipmentController extends Controller
+class LocationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class EquipmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Equipment  $equipment
+     * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function show(Equipment $equipment)
+    public function show(Location $location)
     {
         //
     }
@@ -52,10 +53,10 @@ class EquipmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Equipment  $equipment
+     * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function edit(Equipment $equipment)
+    public function edit(Location $location)
     {
         //
     }
@@ -64,10 +65,10 @@ class EquipmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Equipment  $equipment
+     * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipment $equipment)
+    public function update(Request $request, Location $location)
     {
         //
     }
@@ -75,10 +76,10 @@ class EquipmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Equipment  $equipment
+     * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Equipment $equipment)
+    public function destroy(Location $location)
     {
         //
     }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCarRequest extends FormRequest
+class UpdateReservationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,12 @@ class StoreCarRequest extends FormRequest
     public function rules()
     {
         return [
-            'model' => ['required', 'string', 'max:255'],
-            'registration' => ['required', 'string', 'max:255', 'unique:cars'],
-            'year' => ['required', 'date_format:Y'],
-            'car_class_id' => ['required'],
-            'seats' => ['required', 'integer'],
-            'price' => ['required', 'integer'],
-            'photo' => ['required', 'image'],
+            'client_id' => ['required'],
+            'car_id' => ['required'],
+            'from_date' => ['required', 'date'],
+            'to_date' => ['required', 'date'],
+            'start_location_id' => ['required'],
+            'end_location_id' => ['required'],
             'notes' => ['nullable', 'string'],
         ];
     }

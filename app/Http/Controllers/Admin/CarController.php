@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreCarRequest;
-use App\Http\Requests\UpdateCarRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreCarRequest;
+use App\Http\Requests\Admin\UpdateCarRequest;
 use App\Models\Car;
 use App\Models\CarClass;
 use Illuminate\Http\Request;

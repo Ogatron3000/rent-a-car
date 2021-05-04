@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
-@section('content')
+@section('dashboard-content')
     <section class="py-5">
         <div class="container">
             <!-- Page Heading/Breadcrumbs-->
@@ -9,7 +9,7 @@
                 <small>Subheading</small>
             </h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="{{ route('reservations.index') }}">Reservations</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.reservations.index') }}">Reservations</a></li>
                 <li class="breadcrumb-item active">{{ $reservation->name }}</li>
             </ol>
             <!-- Portfolio Item Row-->
@@ -59,12 +59,12 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="{{ $reservation->path2() . '/edit' }}">
+                                    <a href="{{ $reservation->path() . '/edit' }}">
                                         <button class="btn btn-sm btn-primary">Edit</button>
                                     </a>
                                 </td>
                                 <td>
-                                    <form method="POST" action="{{ $reservation->path2() }}" class="mb-2">
+                                    <form method="POST" action="{{ $reservation->path() }}" class="mb-2">
                                         @method('DELETE')
                                         @csrf
                                         <button class="btn btn-sm btn-danger">Delete</button>

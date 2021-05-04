@@ -22,8 +22,8 @@ class CreateClientsTable extends Migration
             $table->string('phone');
             $table->date('first_reservation');
             $table->date('last_reservation');
-            $table->boolean('registered');
-            $table->text('notes');
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

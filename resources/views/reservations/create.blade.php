@@ -1,6 +1,6 @@
-@extends('layouts.dashboard')
+@extends('layouts.app')
 
-@section('dashboard-content')
+@section('content')
     <div class="container">
         <div class="row justify-content-center my-5">
             <div class="col-md-8">
@@ -10,24 +10,6 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('reservations.store') }}">
                             @csrf
-
-                            <div class="form-group row">
-                                <label for="client_id" class="col-md-4 col-form-label text-md-right">{{ __('Client') }}</label>
-
-                                <div class="col-md-6">
-                                    <select id="client_id" class="form-control" name="client_id" required>
-                                        @foreach($clients as $client)
-                                            <option {{ $client->id === old('client_id') ? 'selected' : '' }} value={{ $client->id }}>{{ $client->name }}</option>
-                                        @endforeach
-                                    </select>
-
-                                    @error('client_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
 
                             <div class="form-group row">
                                 <label for="car_id" class="col-md-4 col-form-label text-md-right">{{ __('Car') }}</label>

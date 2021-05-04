@@ -9,7 +9,7 @@
                 <small>Subheading</small>
             </h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="{{ route('clients.index') }}">Clients</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.clients.index') }}">Clients</a></li>
                 <li class="breadcrumb-item active">{{ $client->name }}</li>
             </ol>
             <!-- Portfolio Item Row-->

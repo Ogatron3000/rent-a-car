@@ -13,11 +13,16 @@ class Client extends Model
 
     public function path()
     {
-        return '/admin/dashboard/clients/' . $this->id;
+        return '/admin/clients/' . $this->id;
     }
 
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
