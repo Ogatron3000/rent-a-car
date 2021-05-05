@@ -20,8 +20,8 @@ class CreateClientsTable extends Migration
             $table->string('passport');
             $table->string('email');
             $table->string('phone');
-            $table->date('first_reservation');
-            $table->date('last_reservation');
+            $table->date('first_reservation')->nullable();
+            $table->date('last_reservation')->nullable();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->text('notes')->nullable();
             $table->timestamps();

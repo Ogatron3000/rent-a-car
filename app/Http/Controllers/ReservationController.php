@@ -39,9 +39,10 @@ class ReservationController extends Controller
         $validated['price'] = $this->calculatePrice($validated, $request->get('equipment_ids', []));
 
         $client = Client::where('user_id', auth()->id())->first();
-        if ( ! $client) {
-            $client = $this->createClient();
-        }
+        $client->update([
+            'first_reservation' => $client->first_reservation ?? Carbon::now()->toDateString(),
+            'last_reservation'  => Carbon::now()->toDateString(),
+        ]);
         $validated['client_id'] = $client->id;
 
         $reservation = Reservation::create($validated);
@@ -78,6 +79,7 @@ class ReservationController extends Controller
         $validated['price'] = $this->calculatePrice($validated, $request->get('equipment_ids', []));
 
         $client = Client::where('user_id', auth()->id())->first();
+        $client->update(['last_reservation'  => Carbon::now()->toDateString()]);
         $validated['client_id'] = $client->id;
 
         $reservation->update($validated);
@@ -110,21 +112,5 @@ class ReservationController extends Controller
         }
 
         return $price;
-    }
-
-    protected function createClient()
-    {
-        $user = auth()->user();
-        return Client::create([
-            'name' => $user->name,
-            'country_id' => $user->country_id,
-            'passport' => $user->passport,
-            'phone' => $user->phone,
-            'email' => $user->email,
-            'first_reservation' => Carbon::now()->toDateString(),
-            'last_reservation' => Carbon::now()->toDateString(),
-            'user_id' => $user->id,
-            'notes' => null
-        ]);
     }
 }

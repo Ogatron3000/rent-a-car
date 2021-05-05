@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
 use App\Models\Country;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -64,8 +66,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'country_id' => ['required'],
-            'passport' => ['required', 'string', 'unique:users'],
-            'phone' => ['nullable', 'string', 'unique:users'],
+            'passport' => ['required', 'string', 'unique:clients'],
+            'phone' => ['nullable', 'string', 'unique:clients'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -79,13 +81,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        Client::create([
             'name' => $data['name'],
             'country_id' => $data['country_id'],
             'passport' => $data['passport'],
             'phone' => $data['phone'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'first_reservation' => null,
+            'last_reservation' => null,
+            'user_id' => $user->id,
+            'notes' => null
         ]);
+
+        return $user;
     }
 }
