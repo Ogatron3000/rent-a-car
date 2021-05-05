@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Edit Reservation') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ $reservation->path2() }}">
+                        <form method="POST" action="{{ $reservation->path() }}">
                             @method('PUT')
                             @csrf
 

@@ -47,10 +47,10 @@
                                 </td>
                                 <td>{{ $reservation->price }}</td>
                                 <td>
-                                    <a href="{{ $reservation->path2() . '/edit' }}">
+                                    <a href="{{ $reservation->path() . '/edit' }}">
                                         <button class="btn btn-sm btn-warning">Edit</button>
                                     </a>
-                                    <form method="POST" action="{{ $reservation->path2() }}" class="mb-2">
+                                    <form method="POST" action="{{ $reservation->path() }}" class="mb-2">
                                         @method('DELETE')
                                         @csrf
                                         <button class="btn btn-sm btn-danger">Del</button>
