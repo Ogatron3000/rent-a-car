@@ -25,8 +25,8 @@ class UpdateReservationRequest extends FormRequest
     {
         return [
             'car_id' => ['required'],
-            'from_date' => ['required', 'date'],
-            'to_date' => ['required', 'date'],
+            'from_date' => ['required', 'date', 'after_or_equal:today', 'before:to_date'],
+            'to_date' => ['required', 'date', 'after:today', 'after:from_date'],
             'start_location_id' => ['required'],
             'end_location_id' => ['required'],
             'notes' => ['nullable', 'string'],

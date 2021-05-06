@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\UpdateReservationRequest;
 use App\Models\Car;
+use App\Models\CarClass;
 use App\Models\Client;
 use App\Models\Equipment;
 use App\Models\Location;
@@ -26,10 +27,11 @@ class ReservationController extends Controller
     public function create()
     {
         $cars = Car::all();
+        $carClasses = CarClass::all();
         $locations = Location::all();
         $equipment = Equipment::all();
 
-        return view('reservations.create', compact('cars', 'locations', 'equipment'));
+        return view('reservations.create', compact('cars', 'carClasses', 'locations', 'equipment'));
     }
 
     public function store(StoreReservationRequest $request)
@@ -45,11 +47,13 @@ class ReservationController extends Controller
         ]);
         $validated['client_id'] = $client->id;
 
+        Car::checkAvailability($validated['car_id'], $validated['from_date'], $validated['to_date']);
+
         $reservation = Reservation::create($validated);
 
         $reservation->equipment()->attach($request->equipment_ids);
 
-        return redirect($reservation->path2());
+        return redirect($reservation->path());
     }
 
     public function show(Reservation $reservation)
@@ -82,12 +86,14 @@ class ReservationController extends Controller
         $client->update(['last_reservation'  => Carbon::now()->toDateString()]);
         $validated['client_id'] = $client->id;
 
+        Car::checkAvailability($validated['car_id'], $validated['from_date'], $validated['to_date']);
+
         $reservation->update($validated);
 
         $reservation->equipment()->detach();
         $reservation->equipment()->attach($request->equipment_ids);
 
-        return redirect($reservation->path2());
+        return redirect($reservation->path());
     }
 
     public function destroy(Reservation $reservation)
@@ -107,9 +113,7 @@ class ReservationController extends Controller
         $price = $days * $carPrice;
 
         // add equipment price to total price
-        foreach ($equipment_ids as $id) {
-            $price += Equipment::findOrFail($id)->price;
-        }
+        $price += Equipment::findMany($equipment_ids)->sum('price');
 
         return $price;
     }

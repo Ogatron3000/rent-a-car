@@ -21,9 +21,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 <body>
     @include('_partials._navbar')
     @yield('content')
+    @livewireScripts
 </body>
 </html>
