@@ -1,6 +1,6 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    {{--<div class="container">--}}
-        <a class="navbar-brand" href="/home">Brm Brm Car</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- <div class="container"> -->
+        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
@@ -9,9 +9,9 @@
                         <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
                     @endif
                 @endauth
-                <li class="nav-item"><a class="nav-link" href="{{ route('fleet') }}">Fleet</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('fleet') }}">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -27,8 +27,8 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -40,5 +40,5 @@
                 @endguest
             </ul>
         </div>
-    {{--</div>--}}
+    <!-- </div> -->
 </nav>
