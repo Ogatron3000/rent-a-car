@@ -49,27 +49,27 @@
         <div class="row">
             <div class="col-md-4 col-12-medium mb-4 mb-lg-0 text-center">
                 <section class="first">
-                    <i class="icon solid featured fas fa-map-marker-alt fa-8x mb-4"></i>
+                    <i class="icon solid featured fas fa-map-marker-alt fa-6x mb-4"></i>
                     <header>
-                        <h2>Ipsum consequat</h2>
+                        <h3>Ipsum consequat</h2>
                     </header>
                     <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
                 </section>
             </div>
             <div class="col-md-4 col-12-medium mb-4 mb-lg-0 text-center">
                 <section class="first">
-                    <i class="icon solid featured far fa-clock fa-8x mb-4"></i>
+                    <i class="icon solid featured far fa-clock fa-6x mb-4"></i>
                     <header>
-                        <h2>Ipsum consequat</h2>
+                        <h3>Ipsum consequat</h2>
                     </header>
                     <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
                 </section>
             </div>
             <div class="col-md-4 col-12-medium mb-4 mb-lg-0 text-center">
                 <section class="first">
-                    <i class="icon solid featured fas fa-euro-sign fa-8x mb-4"></i>
+                    <i class="icon solid featured fas fa-euro-sign fa-6x mb-4"></i>
                     <header>
-                        <h2>Ipsum consequat</h2>
+                        <h3>Ipsum consequat</h2>
                     </header>
                     <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
                 </section>
@@ -82,68 +82,21 @@
 <!-- Portfolio Section-->
 <section class="py-5 bg-light">
     <div class="container">
-        <h2 class="mb-4">Chek out our fleet</h2>
+    <div class="row">
+    </div>
+        <h2 class="mb-4">Trending Cars</h2>
         <div class="row">
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100">
-                    <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
-                    <div class="card-body">
-                        <h4 class="card-title"><a href="#!">Project One</a></h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+            @foreach($cars as $car)
+                <div class="col-lg-4 col-sm-6 mb-4">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." />
+                        <div class="card-body">
+                            <h4 class="card-title">{{ $car->model }}</h4>
+                            <p class="card-text">{{ $car->description }}</p>
+                        </div>
                     </div>
-                    <div class="card-footer"><a class="btn btn-primary" href="#!">Book now!</a></div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100">
-                    <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
-                    <div class="card-body">
-                        <h4 class="card-title"><a href="#!">Project Two</a></h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn btn-primary" href="#!">Book now!</a></div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100">
-                    <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
-                    <div class="card-body">
-                        <h4 class="card-title"><a href="#!">Project Three</a></h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-                    </div>
-                    <div class="card-footer"><a class="btn btn-primary" href="#!">Book now!</a></div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100">
-                    <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
-                    <div class="card-body">
-                        <h4 class="card-title"><a href="#!">Project Four</a></h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn btn-primary" href="#!">Book now!</a></div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100">
-                    <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
-                    <div class="card-body">
-                        <h4 class="card-title"><a href="#!">Project Five</a></h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn btn-primary" href="#!">Book now!</a></div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100">
-                    <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
-                    <div class="card-body">
-                        <h4 class="card-title"><a href="#!">Project Six</a></h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn btn-primary" href="#!">Book now!</a></div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -153,7 +106,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p></div>
-            <div class="col-md-4"><a class="btn btn-lg btn-secondary btn-block" href="#!">Call to Action</a></div>
+            <div class="col-md-4"><a class="btn btn-lg btn-secondary btn-block" href="{{ route('register') }}">Join Now!</a></div>
         </div>
     </div>
 </aside>

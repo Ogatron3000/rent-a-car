@@ -16,9 +16,9 @@
         @foreach($cars as $car)
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card h-100">
-                    <a href="{{ $car->path() }}"><img class="card-img-top" src="{{ asset($car->photo) }}" alt="..." /></a>
+                   <img class="card-img-top" src="{{ asset($car->photo) }}" alt="..." />
                     <div class="card-body">
-                        <h4 class="card-title"><a href="{{ $car->path() }}">Project One</a></h4>
+                        <h4 class="card-title">{{ $car->model }}</h4>
                         <p class="card-text">{{ $car->description }}</p>
                     </div>
                 </div>
