@@ -9,7 +9,7 @@
                         <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
                     @endif
                 @endauth
-                <li class="nav-item"><a class="nav-link" href="#">Fleet</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('fleet') }}">Fleet</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
                 @guest

@@ -21,8 +21,11 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
+Route::view('/about', 'about')->name('about');
+Route::get('/fleet', function() {
+    return view('fleet', ['cars' => \App\Models\Car::paginate(6)]);
+})->name('fleet');
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -36,9 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
 
-        Route::get('/', function () {
-            return view('dashboard');
-        })->name('dashboard');
+        Route::view('/', 'dashboard')->name('dashboard');
 
         Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
         Route::get('/cars/create', [CarController::class, 'create'])->name('cars.create');
