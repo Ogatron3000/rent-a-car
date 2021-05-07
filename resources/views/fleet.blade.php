@@ -19,8 +19,7 @@
                     <a href="{{ $car->path() }}"><img class="card-img-top" src="{{ asset($car->photo) }}" alt="..." /></a>
                     <div class="card-body">
                         <h4 class="card-title"><a href="{{ $car->path() }}">Project One</a></h4>
-                        <p class="card-text">
-                        </p>
+                        <p class="card-text">{{ $car->description }}</p>
                     </div>
                 </div>
             </div>

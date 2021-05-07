@@ -31,6 +31,7 @@ class UpdateCarRequest extends FormRequest
             'seats' => ['required', 'integer'],
             'price' => ['required', 'integer'],
             'photo' => ['nullable', 'image'],
+            'description' => ['required', 'string'],
             'notes' => ['nullable', 'string'],
         ];
     }

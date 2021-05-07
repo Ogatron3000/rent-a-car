@@ -22,6 +22,7 @@ class CreateCarsTable extends Migration
             $table->integer('seats');
             $table->string('price');
             $table->string('photo');
+            $table->text('description');
             $table->text('notes')->nullable();
             $table->timestamps();
         });

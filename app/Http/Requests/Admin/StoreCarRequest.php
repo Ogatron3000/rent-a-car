@@ -31,6 +31,7 @@ class StoreCarRequest extends FormRequest
             'seats' => ['required', 'integer'],
             'price' => ['required', 'integer'],
             'photo' => ['required', 'image'],
+            'description' => ['required', 'string'],
             'notes' => ['nullable', 'string'],
         ];
     }
