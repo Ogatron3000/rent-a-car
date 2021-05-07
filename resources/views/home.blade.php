@@ -89,7 +89,7 @@
             @foreach($cars as $car)
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="card h-100">
-                        <img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." />
+                        <img class="card-img-top" src="{{ asset($car->photo) }}" alt="..." />
                         <div class="card-body">
                             <h4 class="card-title">{{ $car->model }}</h4>
                             <p class="card-text">{{ $car->description }}</p>

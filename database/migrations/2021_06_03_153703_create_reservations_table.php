@@ -23,6 +23,7 @@ class CreateReservationsTable extends Migration
             $table->foreignId('end_location_id')->references('id')->on('locations');
             $table->integer('price');
             $table->string('notes')->nullable();
+            $table->SoftDeletes();
             $table->timestamps();
         });
     }

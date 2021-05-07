@@ -26,6 +26,11 @@ class Car extends Model
         return $this->hasMany(Reservation::class);
     }
 
+    public function reservationsWithTrashed()
+    {
+        return $this->reservations()->withTrashed();
+    }
+
     public static function checkAvailability($id, $fromDate, $toDate)
     {
         self::where('id', $id)->whereHas('reservations', function ($q) use ($fromDate, $toDate) {
