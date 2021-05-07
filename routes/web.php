@@ -22,6 +22,10 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
