@@ -101,7 +101,7 @@ class ReservationController extends Controller
     {
         $this->authorize('manage', $reservation);
 
-        $reservation->delete();
+        $reservation->forceDelete();
 
         return redirect(route('reservations.index'));
     }
