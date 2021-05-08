@@ -23,7 +23,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @livewireStyles
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     @include('_partials._navbar')
     @yield('content')
     @livewireScripts

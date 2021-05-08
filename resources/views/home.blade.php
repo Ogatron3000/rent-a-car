@@ -41,17 +41,15 @@
         </a>
     </div>
 </header>
-<!-- Page Content -->
 <section class="py-5">
     <div class="container">
         <h1 class="mb-5 text-center">Welcome to Brm Brm Car</h1>
-        <!-- Marketing Icons Section-->
         <div class="row">
             <div class="col-md-4 col-12-medium mb-4 mb-lg-0 text-center">
                 <section class="first">
                     <i class="icon solid featured fas fa-map-marker-alt fa-6x mb-4"></i>
                     <header>
-                        <h3>Ipsum consequat</h2>
+                        <h3>Ipsum consequat</h3>
                     </header>
                     <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
                 </section>
@@ -60,7 +58,7 @@
                 <section class="first">
                     <i class="icon solid featured far fa-clock fa-6x mb-4"></i>
                     <header>
-                        <h3>Ipsum consequat</h2>
+                        <h3>Ipsum consequat</h3>
                     </header>
                     <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
                 </section>
@@ -69,21 +67,16 @@
                 <section class="first">
                     <i class="icon solid featured fas fa-euro-sign fa-6x mb-4"></i>
                     <header>
-                        <h3>Ipsum consequat</h2>
+                        <h3>Ipsum consequat</h3>
                     </header>
                     <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
                 </section>
             </div>
         </div>
-
     </div>
 </section>
-<hr class="my-0" />
-<!-- Portfolio Section-->
 <section class="py-5 bg-light">
     <div class="container">
-    <div class="row">
-    </div>
         <h2 class="mb-4">Trending Cars</h2>
         <div class="row">
             @foreach($cars as $car)
@@ -100,9 +93,7 @@
         </div>
     </div>
 </section>
-<hr class="my-0" />
-<!-- Call to Action-->
-<aside class="py-5 bg-light">
+<aside class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-8"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p></div>
@@ -110,6 +101,7 @@
         </div>
     </div>
 </aside>
-<!-- Footer-->
-@include('_partials._footer')
+<div style="position: relative;">
+    @include('_partials._footer')
+</div>
 @endsection

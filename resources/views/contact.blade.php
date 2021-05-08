@@ -3,16 +3,7 @@
 @section('content')
 <section class="py-5">
     <div class="container">
-        <!-- Page Heading/Breadcrumbs-->
-        <h1>
-            Contact
-            <small>Subheading</small>
-        </h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-            <li class="breadcrumb-item active">Contact</li>
-        </ol>
-        <!-- Content Row-->
+        <h2 class="mb-4">Contact</h2>
         <div class="row">
             <!-- Map Column-->
             <div class="col-lg-8 mb-4">
@@ -45,35 +36,35 @@
         </div>
         <!-- Contact Form-->
         <!-- In order to set the email address and subject line for the contact form go to the assets/mail/contact_me.php file.-->
-        <div class="row">
-            <div class="col-lg-8 mb-4">
-                <h3>Send us a Message</h3>
-                <form id="contactForm" name="sentMessage" novalidate>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Full Name:</label>
-                            <input class="form-control" id="name" type="text" required data-validation-required-message="Please enter your name." />
-                            <p class="help-block"></p>
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Email Address:</label>
-                            <input class="form-control" id="email" type="email" required data-validation-required-message="Please enter your email address." />
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Message:</label>
-                            <textarea class="form-control" id="message" rows="10" cols="100" required data-validation-required-message="Please enter your message" maxlength="999" style="resize: none"></textarea>
-                        </div>
-                    </div>
-                    <div id="success"></div>
-                    <!-- For success/fail messages-->
-                    <button class="btn btn-primary" id="sendMessageButton" type="submit">Send Message</button>
-                </form>
-            </div>
-        </div>
+        {{--<div class="row">--}}
+        {{--    <div class="col-lg-8 mb-4">--}}
+        {{--        <h3>Send us a Message</h3>--}}
+        {{--        <form id="contactForm" name="sentMessage" novalidate>--}}
+        {{--            <div class="control-group form-group">--}}
+        {{--                <div class="controls">--}}
+        {{--                    <label>Full Name:</label>--}}
+        {{--                    <input class="form-control" id="name" type="text" required data-validation-required-message="Please enter your name." />--}}
+        {{--                    <p class="help-block"></p>--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--            <div class="control-group form-group">--}}
+        {{--                <div class="controls">--}}
+        {{--                    <label>Email Address:</label>--}}
+        {{--                    <input class="form-control" id="email" type="email" required data-validation-required-message="Please enter your email address." />--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--            <div class="control-group form-group">--}}
+        {{--                <div class="controls">--}}
+        {{--                    <label>Message:</label>--}}
+        {{--                    <textarea class="form-control" id="message" rows="10" cols="100" required data-validation-required-message="Please enter your message" maxlength="999" style="resize: none"></textarea>--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--            <div id="success"></div>--}}
+        {{--            <!-- For success/fail messages-->--}}
+        {{--            <button class="btn btn-primary" id="sendMessageButton" type="submit">Send Message</button>--}}
+        {{--        </form>--}}
+        {{--    </div>--}}
+        {{--</div>--}}
     </div>
 </section>
 @include('_partials._footer')

@@ -3,15 +3,7 @@
 @section('content')
 <section class="py-5">
     <div class="container">
-        <!-- Page Heading/Breadcrumbs-->
-        <h1 class="mt-4 mb-3">
-            Portfolio 3
-            <small>Subheading</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active">Portfolio 3</li>
-        </ol>
+        <h2 class="mb-4">Fleet</h2>
         <div class="row">
         @foreach($cars as $car)
             <div class="col-lg-4 col-sm-6 mb-4">
