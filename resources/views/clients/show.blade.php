@@ -1,21 +1,26 @@
 @extends('layouts.dashboard')
 
 @section('dashboard-content')
-    <section class="py-5">
-        <div class="container">
-            <!-- Page Heading/Breadcrumbs-->
-            <h1>
-                Portfolio Item
-                <small>Subheading</small>
-            </h1>
+    <section class="py-4">
+        <div class="container-fluid">
+            <h2>Client Details</h2>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="{{ route('admin.clients.index') }}">Clients</a></li>
                 <li class="breadcrumb-item active">{{ $client->name }}</li>
             </ol>
-            <!-- Portfolio Item Row-->
             <div class="row">
                 <div class="col-md-6">
-                    <h3 class="my-3">Client Details</h3>
+                    <div class="d-flex justify-content-between align-items-end">
+                        <h3>Details</h3>
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ $client->path() . '/edit' }}">Edit</a>
+                            <form method="POST" action="{{ $client->path() }}" class="mb-2 ml-2">
+                                @method('DELETE')
+                                @csrf
+                                <button style='border: 0; background: none; padding: 0; color: red;'>Delete</button>
+                            </form>
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <tbody>
@@ -47,24 +52,6 @@
                                 <th>Last Reservation</th>
                                 <td>{{ $client->last_reservation }}</td>
                             </tr>
-                            <tr>
-                                <th>Registered</th>
-                                <td>{{ $client->registered }}</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="{{ $client->path() . '/edit' }}">
-                                        <button class="btn btn-sm btn-primary">Edit</button>
-                                    </a>
-                                </td>
-                                <td>
-                                    <form method="POST" action="{{ $client->path() }}" class="mb-2">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button class="btn btn-sm btn-danger">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -72,7 +59,7 @@
                 </div>
                 <div class="col-md-5 offset-md-1">
                     <h3 class="my-3">Notes</h3>
-                    <p>{{ $client->notes }}</p>
+                    <p>{{ $client->notes ?? 'No notes for this client.' }}</p>
                 </div>
             </div>
         </div>

@@ -7,8 +7,8 @@
                 <div class="card">
                     <div class="card-header">{{ __('Edit Client') }}</div>
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ $client->path() }}">
+                    <form method="POST" action="{{ $client->path() }}">
+                        <div class="card-body">
                             @method("PUT")
                             @csrf
 
@@ -16,7 +16,7 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $client->name }}" required autocomplete="name" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $client->name }}" required autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
                                 <label for="passport" class="col-md-4 col-form-label text-md-right">{{ __('Passport') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="passport" type="text" class="form-control @error('passport') is-invalid @enderror" name="passport" value="{{ $client->passport }}" required autocomplete="passport" autofocus>
+                                    <input id="passport" type="text" class="form-control @error('passport') is-invalid @enderror" name="passport" value="{{ $client->passport }}" required>
 
                                     @error('passport')
                                     <span class="invalid-feedback" role="alert">
@@ -62,7 +62,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail Address') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $client->email }}" required autocomplete="email" autofocus>
+                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $client->email }}" required>
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -76,7 +76,7 @@
                                 <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $client->phone }}" required autocomplete="phone" autofocus>
+                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $client->phone }}" required>
 
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -90,7 +90,7 @@
                                 <label for="first_reservation" class="col-md-4 col-form-label text-md-right">{{ __('First Reservation') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="first_reservation" type="text" class="form-control @error('first_reservation') is-invalid @enderror" name="first_reservation" value="{{ $client->first_reservation }}" required autocomplete="first_reservation" autofocus>
+                                    <input id="first_reservation" type="text" class="form-control @error('first_reservation') is-invalid @enderror" name="first_reservation" value="{{ $client->first_reservation }}" required>
 
                                     @error('first_reservation')
                                     <span class="invalid-feedback" role="alert">
@@ -104,7 +104,7 @@
                                 <label for="last_reservation" class="col-md-4 col-form-label text-md-right">{{ __('Last Reservation') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="last_reservation" type="text" class="form-control @error('last_reservation') is-invalid @enderror" name="last_reservation" value="{{ $client->last_reservation }}" required autocomplete="last_reservation" autofocus>
+                                    <input id="last_reservation" type="text" class="form-control @error('last_reservation') is-invalid @enderror" name="last_reservation" value="{{ $client->last_reservation }}" required>
 
                                     @error('last_reservation')
                                     <span class="invalid-feedback" role="alert">
@@ -113,26 +113,6 @@
                                     @enderror
                                 </div>
                             </div>
-
-                            {{--<div class="form-group row">--}}
-                            {{--    <label for="registered" class="col-md-4 col-form-label text-md-right">{{ __('Registered') }}</label>--}}
-
-                            {{--    <div class="col-md-6">--}}
-                            {{--        <select class="form-control" name="registered" required>--}}
-                            {{--            @for($val = 0; $val <= 1; $val++)--}}
-                            {{--                <option {{ $val === $client->registered ? 'selected' : '' }} value={{ $val }}>--}}
-                            {{--                    {{ $val === 0 ? 'No' : 'Yes' }}--}}
-                            {{--                </option>--}}
-                            {{--            @endfor--}}
-                            {{--        </select>--}}
-
-                            {{--        @error('registered')--}}
-                            {{--        <span class="invalid-feedback" role="alert">--}}
-                            {{--            <strong>{{ $message }}</strong>--}}
-                            {{--        </span>--}}
-                            {{--        @enderror--}}
-                            {{--    </div>--}}
-                            {{--</div>--}}
 
                             <div class="form-group row">
                                 <label for="notes" class="col-md-4 col-form-label text-md-right">{{ __('Notes') }}</label>
@@ -147,16 +127,17 @@
                                     @enderror
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Update') }}
-                                    </button>
-                                </div>
+                        <div class="card-footer">
+                            <div class="row justify-content-between">
+                                <a href="{{ url()->previous() }}">
+                                    <button class="btn btn-secondary" type="button">Back</button>
+                                </a>
+                                <button class="btn btn-primary" type="submit">Update</button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

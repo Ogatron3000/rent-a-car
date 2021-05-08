@@ -33,9 +33,7 @@
                                 <tbody>
                                 @foreach($reservations as $reservation)
                                     <tr>
-                                        <td>
-                                            {{ $reservation->car->model }}
-                                        </td>
+                                        <td>{{ $reservation->car->model }}</td>
                                         <td>{{ $reservation->from_date }}</td>
                                         <td>{{ $reservation->to_date }}</td>
                                         <td>{{ $reservation->startLocation->name }}</td>

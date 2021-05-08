@@ -7,8 +7,8 @@
                 <div class="card">
                     <div class="card-header">{{ __('Edit Car') }}</div>
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ $car->path() }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ $car->path() }}" enctype="multipart/form-data">
+                        <div class="card-body">
                             @method("PUT")
                             @csrf
 
@@ -22,7 +22,7 @@
                                 <label for="model" class="col-md-4 col-form-label text-md-right">{{ __('Model') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="model" type="text" class="form-control @error('model') is-invalid @enderror" name="model" value="{{ $car->model }}" required autocomplete="model" autofocus>
+                                    <input id="model" type="text" class="form-control @error('model') is-invalid @enderror" name="model" value="{{ $car->model }}" required autofocus>
 
                                     @error('model')
                                     <span class="invalid-feedback" role="alert">
@@ -36,7 +36,7 @@
                                 <label for="registration" class="col-md-4 col-form-label text-md-right">{{ __('Registration') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="registration" type="text" class="form-control @error('registration') is-invalid @enderror" name="registration" value="{{ $car->registration }}" required autocomplete="registration">
+                                    <input id="registration" type="text" class="form-control @error('registration') is-invalid @enderror" name="registration" value="{{ $car->registration }}" required>
 
                                     @error('registration')
                                     <span class="invalid-feedback" role="alert">
@@ -112,7 +112,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">€</div>
                                         </div>
-                                        <input id="price" type="number" min="0.01" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $car->price }}" required autocomplete="price">
+                                        <input id="price" type="number" min="0.01" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $car->price }}" required>
                                     </div>
 
 
@@ -168,16 +168,17 @@
                                     @enderror
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Update') }}
-                                    </button>
-                                </div>
+                        <div class="card-footer">
+                            <div class="row justify-content-between">
+                                <a href="{{ url()->previous() }}">
+                                    <button class="btn btn-secondary" type="button">Back</button>
+                                </a>
+                                <button class="btn btn-primary" type="submit">Update</button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

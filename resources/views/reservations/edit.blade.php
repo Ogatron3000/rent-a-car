@@ -6,8 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Edit Reservation') }}</div>
-
-
+                    
                     <form method="POST" action="{{ $reservation->path() }}">
                         @method('PUT')
                         @csrf
