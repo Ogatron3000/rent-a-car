@@ -15,7 +15,7 @@
 
                         <div class="card-footer">
                             <div class="row justify-content-between">
-                                <a href="{{ route('home') }}">
+                                <a href="{{ $reservation->path() }}">
                                     <button class="btn btn-secondary" type="button">Back</button>
                                 </a>
                                 <button class="btn btn-primary" type="submit">Book</button>

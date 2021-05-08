@@ -99,7 +99,7 @@
             <div class="col-md-6">
                 <select id="start_location_id" class="form-control" name="start_location_id" required>
                     <option value="" selected disabled>select start location</option>
-                    @foreach(($locations) as $location)
+                    @foreach($locations as $location)
                         <option value={{ $location->id }}>{{ $location->name }}</option>
                     @endforeach
                 </select>
@@ -118,7 +118,7 @@
             <div class="col-md-6">
                 <select id="end_location_id" class="form-control" name="end_location_id" required>
                     <option value="" selected disabled>select end location</option>
-                    @foreach(($locations) as $location)
+                    @foreach($locations as $location)
                         <option value={{ $location->id }}>{{ $location->name }}</option>
                     @endforeach
                 </select>
@@ -136,7 +136,7 @@
 
             <div class="col-md-6">
                 <select id="equipment_ids" class="form-control" name="equipment_ids[]" multiple>
-                    @foreach(($equipment) as $item)
+                    @foreach($equipment as $item)
                         <option value={{ $item->id }}>{{ $item->name }}</option>
                     @endforeach
                 </select>
@@ -168,7 +168,9 @@
                 <p class="col-md-4 col-form-label text-md-right">Price</p>
 
                 <div class="col-md-6">
-                    {{ \App\Models\Car::findOrFail($carId)->price * \Carbon\Carbon::parse($fromDate)->diffInDays($toDate) + \App\Models\Equipment::findMany($equipmentIds)->sum('price') }} EUR
+                    <span class="form-control">
+                        {{ \App\Models\Car::findOrFail($carId)->price * \Carbon\Carbon::parse($fromDate)->diffInDays($toDate) + \App\Models\Equipment::findMany($equipmentIds)->sum('price') }} EUR
+                    </span>
                 </div>
             </div>
         @endif

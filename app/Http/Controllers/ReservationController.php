@@ -19,7 +19,7 @@ class ReservationController extends Controller
     public function index()
     {
         $client = Client::where('user_id', auth()->id())->first();
-        $reservations = Reservation::where('client_id', $client->id ?? null)->paginate(10);
+        $reservations = Reservation::where('client_id', $client->id ?? null)->withTrashed()->orderBy('from_date', 'asc')->paginate(10);
 
         return view('reservations.index', compact('reservations'));
     }
@@ -68,10 +68,11 @@ class ReservationController extends Controller
         $this->authorize('manage', $reservation);
 
         $cars = Car::all();
+        $carClasses = CarClass::all();
         $locations = Location::all();
         $equipment = Equipment::all();
 
-        return view('reservations.edit', compact('reservation', 'cars', 'locations', 'equipment'));
+        return view('reservations.edit', compact('reservation', 'cars', 'carClasses', 'locations', 'equipment'));
     }
 
     public function update(UpdateReservationRequest $request, Reservation $reservation)
