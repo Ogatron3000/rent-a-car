@@ -14,9 +14,13 @@ class ClientController extends Controller
 
     public function index()
     {
-        $clients = Client::with('country')->paginate(10);
+        $clients = request()->query()
+            ? $this->search()
+            : Client::with('country')->paginate(10);
 
-        return view('clients.index', compact('clients'));
+        $countries = Country::all();
+
+        return view('clients.index', compact('clients', 'countries'));
     }
 
     public function create()
@@ -57,5 +61,37 @@ class ClientController extends Controller
         $client->delete();
 
         return redirect(route('clients.index'));
+    }
+
+    protected function search()
+    {
+        return Client::where($this->makeQuery([
+            'name:like',
+            'country_id',
+            'passport',
+            'email',
+            'phone',
+            'first_reservation',
+            'last_reservation',
+        ]))->with('country')->paginate(10);
+    }
+
+    protected function makeQuery($values)
+    {
+        $res = [];
+
+        foreach ($values as $value) {
+            if ( ! request()->query($value)) {
+                continue;
+            }
+
+            if (str_contains($value, ':')) {
+                $res[] = [$value, 'like', '%' . request()->query($value) . '%',];
+            } else {
+                $res[] = [$value, '=', request()->query($value)];
+            }
+
+            return $res;
+        }
     }
 }
