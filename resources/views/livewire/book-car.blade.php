@@ -68,19 +68,7 @@
             <div class="col-md-6">
                 <select id="car_id" class="form-control" name="car_id" required>
                     <option value="" selected disabled>select car</option>
-                    @foreach(\App\Models\Car::where('car_class_id', $carClassId)->whereHas('reservations', function ($q) use ($fromDate, $toDate) {
-                        $q->where([
-                            ['from_date', '>', $fromDate],
-                            ['to_date', '>', $toDate],
-                            ['from_date', '>', $toDate],
-                            ['to_date', '>', $fromDate]
-                        ])->orWhere([
-                            ['from_date', '<', $fromDate],
-                            ['to_date', '<', $toDate],
-                            ['from_date', '<', $toDate],
-                            ['to_date', '<', $fromDate]
-                        ]);
-                    })->orWhereDoesntHave('reservations')->get() as $car)
+                    @foreach(\App\Models\Car::queryAvailable($fromDate, $toDate)->where('car_class_id', $carClassId)->get() as $car)
                         <option value={{ $car->id }}>{{ $car->model }}</option>
                     @endforeach
                 </select>

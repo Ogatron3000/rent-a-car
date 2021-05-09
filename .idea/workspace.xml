@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24212766-6205-47bc-870d-5b94e58d34d2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AvailabilityController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/SearchCar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/availability.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/search-car.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_partials/_navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_partials/_navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Car.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Car.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/book-car-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/book-car-edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/book-car.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/book-car.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,7 +200,7 @@
       <workItem from="1620481759096" duration="102000" />
       <workItem from="1620481877752" duration="122000" />
       <workItem from="1620482017647" duration="13832000" />
-      <workItem from="1620550660625" duration="8529000" />
+      <workItem from="1620550660625" duration="17916000" />
     </task>
     <servers />
   </component>

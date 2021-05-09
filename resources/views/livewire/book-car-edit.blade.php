@@ -65,19 +65,7 @@
             <div class="col-md-6">
                 <select id="car_id" class="form-control" name="car_id" required>
                     <option value="" selected disabled>select car</option>
-                    @foreach(\App\Models\Car::where('car_class_id', $carClassId)->whereHas('reservations', function ($q) use ($fromDate, $toDate) {
-                        $q->where([
-                            ['from_date', '>', $fromDate],
-                            ['to_date', '>', $toDate],
-                            ['from_date', '>', $toDate],
-                            ['to_date', '>', $fromDate]
-                        ])->orWhere([
-                            ['from_date', '<', $fromDate],
-                            ['to_date', '<', $toDate],
-                            ['from_date', '<', $toDate],
-                            ['to_date', '<', $fromDate]
-                        ]);
-                    })->orWhereDoesntHave('reservations')->get() as $car)
+                    @foreach(\App\Models\Car::queryAvailable($fromDate, $toDate)->where('car_class_id', $carClassId)->get() as $car)
                         <option value={{ $car->id }}>{{ $car->model }}</option>
                     @endforeach
                 </select>
@@ -96,19 +84,9 @@
             <div class="col-md-6">
                 <select id="car_id" class="form-control" name="car_id" required>
                     <option value="" selected disabled>select car</option>
-                    @foreach(\App\Models\Car::where('car_class_id', $carClassId)->whereHas('reservations', function ($q) use ($reservation) {
-                        $q->where([
-                            ['from_date', '>', $reservation->from_date],
-                            ['to_date', '>', $reservation->to_date],
-                            ['from_date', '>', $reservation->to_date],
-                            ['to_date', '>', $reservation->from_date]
-                        ])->orWhere([
-                            ['from_date', '<', $reservation->from_date],
-                            ['to_date', '<', $reservation->to_date],
-                            ['from_date', '<', $reservation->to_date],
-                            ['to_date', '<', $reservation->from_date]
-                        ])->orWhere('id', $reservation->id);
-                    })->orWhereDoesntHave('reservations')->get() as $car)
+                    @foreach(\App\Models\Car::queryAvailable($reservation->from_date, $reservation->to_date)->orWhereHas('reservations', function ($q) use ($reservation) {
+                            $q->Where('id', $reservation->id);
+                        })->where('car_class_id', $carClassId)->get() as $car)
                         <option {{ $car->id === $reservation->car->id ? 'selected' : '' }} value={{ $car->id }}>{{ $car->model }}</option>
                     @endforeach
                 </select>

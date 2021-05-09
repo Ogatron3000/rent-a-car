@@ -47,7 +47,8 @@ class ReservationController extends Controller
         ]);
         $validated['client_id'] = $client->id;
 
-        Car::checkAvailability($validated['car_id'], $validated['from_date'], $validated['to_date']);
+        // check car availability
+        Car::where('id', $validated['car_id'])->queryAvailable($validated['from_date'], $validated['to_date'])->firstOrFail();
 
         $reservation = Reservation::create($validated);
 
@@ -86,7 +87,8 @@ class ReservationController extends Controller
         $client = Client::where('user_id', auth()->id())->first();
         $validated['client_id'] = $client->id;
 
-        Car::checkAvailability($validated['car_id'], $validated['from_date'], $validated['to_date']);
+        // check car availability
+        Car::where('id', $validated['car_id'])->queryAvailable($validated['from_date'], $validated['to_date'])->firstOrFail();
 
         $reservation->update($validated);
 

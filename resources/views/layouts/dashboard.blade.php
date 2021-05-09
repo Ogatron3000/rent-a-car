@@ -19,9 +19,9 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
                             Cars
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('admin.availability') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-search"></i></div>
-                            Search
+                            Availability
                         </a>
                     </div>
                 </div>

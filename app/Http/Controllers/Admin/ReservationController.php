@@ -19,7 +19,7 @@ class ReservationController extends Controller
 
     public function index()
     {
-        $reservations = Reservation::paginate(10);
+        $reservations = Reservation::withTrashed()->orderBy('from_date', 'asc')->paginate(10);
 
         return view('reservations.admin.index', compact('reservations'));
     }
@@ -48,7 +48,8 @@ class ReservationController extends Controller
         $validated['passport'] = $client->id;
         unset($validated['passport']);
 
-        Car::checkAvailability($validated['car_id'], $validated['from_date'], $validated['to_date']);
+        // check car availability
+        Car::where('id', $validated['car_id'])->queryAvailable($validated['from_date'], $validated['to_date'])->firstOrFail();
 
         $reservation = Reservation::create($validated);
 
@@ -82,7 +83,8 @@ class ReservationController extends Controller
         $validated['client_id'] = $client->id;
         unset($validated['passport']);
 
-        Car::checkAvailability($validated['car_id'], $validated['from_date'], $validated['to_date']);
+        // check car availability
+        Car::where('id', $validated['car_id'])->queryAvailable($validated['from_date'], $validated['to_date'])->firstOrFail();
 
         $reservation->update($validated);
 
