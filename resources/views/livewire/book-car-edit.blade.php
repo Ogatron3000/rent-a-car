@@ -27,7 +27,7 @@
                    max="{{ $toDate ? \Carbon\Carbon::parse($toDate)->subDay()->toDateString() : \Carbon\Carbon::parse($reservation->to_date)->subDay()->toDateString() }}"
                    class="form-control @error('from_date') is-invalid @enderror"
                    name="from_date"
-                   value="{{ $fromDate ?? $reservation->from_date }}"
+                   value="{{ $fromDate !== "" ? $fromDate : $reservation->from_date }}"
                    required>
 
             @error('from_date')
@@ -47,7 +47,7 @@
                    min="{{ $fromDate ? \Carbon\Carbon::parse($fromDate)->addDay()->toDateString() : \Carbon\Carbon::parse($reservation->from_date)->addDay()->toDateString() }}"
                    class="form-control @error('to_date') is-invalid @enderror"
                    name="to_date"
-                   value="{{ $toDate ?? $reservation->to_date }}"
+                   value="{{ $toDate !== "" ? $toDate : $reservation->to_date }}"
                    required>
 
             @error('to_date')

@@ -15,7 +15,7 @@
                                 <label for="passport" class="col-md-4 col-form-label text-md-right">{{ __('Client Passport') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="from_date"
+                                    <input id="passport"
                                            type="text"
                                            class="form-control @error('from_date') is-invalid @enderror"
                                            name="passport"
