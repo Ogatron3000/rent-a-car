@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
 @section('dashboard-content')
-    <section class="py-4">
-        <div class="container-fluid">
+    <section class="py-5">
+        <div class="container">
             <h2>Client Details</h2>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="{{ route('admin.clients.index') }}">Clients</a></li>
@@ -58,7 +58,7 @@
 
                 </div>
                 <div class="col-md-5 offset-md-1">
-                    <h3 class="my-3">Notes</h3>
+                    <h3>Notes</h3>
                     <p>{{ $client->notes ?? 'No notes for this client.' }}</p>
                 </div>
             </div>

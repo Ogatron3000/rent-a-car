@@ -1,13 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('dashboard-content')
-    <section class="my-4">
+    <section class="my-5">
         <div class="container">
             <h3>Search Availability</h3>
             <form method="GET" action="{{ route('admin.availability') }}">
                 @csrf
-                <div class="card-body">
-                    <livewire:search-car :carClasses="$carClasses" />
+                <div class="card col-xl-8 my-3">
+                    <div class="card-body">
+                        <livewire:search-car :carClasses="$carClasses" />
+                    </div>
                 </div>
             </form>
             <h3>Available Cars</h3>

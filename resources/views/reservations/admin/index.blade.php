@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('dashboard-content')
-    <section class="py-4">
+    <section class="py-5">
         <div class="container">
             <div class="d-flex justify-content-between align-items-end">
                 <h2>Reservations</h2>

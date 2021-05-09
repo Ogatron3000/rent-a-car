@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
 @section('dashboard-content')
-    <section class="py-4">
-        <div class="container-fluid">
+    <section class="py-5">
+        <div class="container">
             <h2>Car Details</h2>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="{{ route('admin.cars.index') }}">Cars</a></li>
@@ -52,7 +52,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <h3 class="my-3">Notes</h3>
+                    <h3>Notes</h3>
                     <p>{{ $car->notes ?? 'No notes for this car.' }}</p>
                 </div>
             </div>

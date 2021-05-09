@@ -8,7 +8,7 @@ class SearchCar extends Component
 {
     public $carClasses;
 
-    public $carClassId = 1;
+    public $carClassId = '';
     public $fromDate = '';
     public $toDate = '';
 

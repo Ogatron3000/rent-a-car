@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('dashboard-content')
-    <section class="py-4">
+    <section class="py-5">
         <div class="container">
             <h2>Reservation Details</h2>
             <ol class="breadcrumb mb-4">
@@ -68,8 +68,8 @@
 
                 </div>
                 <div class="col-md-5 offset-md-1">
-                    <h3 class="my-3">Notes</h3>
-                    <p>{{ $reservation->notes }}</p>
+                    <h3>Notes</h3>
+                    <p>{{ $reservation->notes ?? "No notes for this reservation." }}</p>
                 </div>
             </div>
         </div>

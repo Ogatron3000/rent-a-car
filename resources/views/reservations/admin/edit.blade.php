@@ -24,7 +24,7 @@
                                            required>
 
                                     @error('passport')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror

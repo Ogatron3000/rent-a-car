@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
 @section('dashboard-content')
-    <section class="my-4">
-        <div class="container-fluid">
+    <section class="my-5">
+        <div class="container">
             <div class="d-flex justify-content-between align-items-end">
                 <h2>Cars</h2>
                 <a href="{{ route('admin.cars.create') }}">

@@ -1,16 +1,17 @@
 <div>
     <div class="form-group row" wire:model="carClassId">
-        <label for="car_class_id" class="col-md-4 col-form-label text-md-right">{{ __('Class') }}</label>
+        <label for="car_class_id" class="col-md-4 col-form-label text-md-right">{{ __('Car Class') }}</label>
 
         <div class="col-md-6">
             <select id="car_class_id" class="form-control" name="car_class_id" required>
+                <option value="" selected disabled>select class</option>
                 @foreach($carClasses as $class)
                     <option {{ $class->id === $reservation->car->carClass->id ? 'selected' : '' }} value={{ $class->id }}>{{ $class->name }}</option>
                 @endforeach
             </select>
 
             @error('car_class_id')
-            <span class="invalid-feedback" role="alert">
+            <span class="text-danger">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
@@ -31,7 +32,7 @@
                    required>
 
             @error('from_date')
-            <span class="invalid-feedback" role="alert">
+            <span class="text-danger">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
@@ -51,27 +52,27 @@
                    required>
 
             @error('to_date')
-            <span class="invalid-feedback" role="alert">
+            <span class="text-danger">
             <strong>{{ $message }}</strong>
         </span>
             @enderror
         </div>
     </div>
 
-    @if($fromDate && $toDate)
+    @if($carClassId && $fromDate && $toDate)
         <div class="form-group row" wire:model="carId">
             <label for="car_id" class="col-md-4 col-form-label text-md-right">{{ __('Car') }}</label>
 
             <div class="col-md-6">
                 <select id="car_id" class="form-control" name="car_id" required>
                     <option value="" selected disabled>select car</option>
-                    @foreach(\App\Models\Car::queryAvailable($fromDate, $toDate)->where('car_class_id', $carClassId)->get() as $car)
+                    @foreach(\App\Models\Car::queryAvailable($fromDate, $toDate, $carClassId)->get() as $car)
                         <option value={{ $car->id }}>{{ $car->model }}</option>
                     @endforeach
                 </select>
 
                 @error('car_id')
-                <span class="invalid-feedback" role="alert">
+                <span class="text-danger">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
@@ -84,15 +85,15 @@
             <div class="col-md-6">
                 <select id="car_id" class="form-control" name="car_id" required>
                     <option value="" selected disabled>select car</option>
-                    @foreach(\App\Models\Car::queryAvailable($reservation->from_date, $reservation->to_date)->orWhereHas('reservations', function ($q) use ($reservation) {
+                    @foreach(\App\Models\Car::queryAvailable($reservation->from_date, $reservation->to_date, $carClassId)->orWhereHas('reservations', function ($q) use ($reservation) {
                             $q->Where('id', $reservation->id);
-                        })->where('car_class_id', $carClassId)->get() as $car)
+                        })->get() as $car)
                         <option {{ $car->id === $reservation->car->id ? 'selected' : '' }} value={{ $car->id }}>{{ $car->model }}</option>
                     @endforeach
                 </select>
 
                 @error('car_id')
-                <span class="invalid-feedback" role="alert">
+                <span class="text-danger">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
@@ -112,7 +113,7 @@
             </select>
 
             @error('start_location_id')
-            <span class="invalid-feedback" role="alert">
+            <span class="text-danger">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
@@ -131,7 +132,7 @@
             </select>
 
             @error('end_location_id')
-            <span class="invalid-feedback" role="alert">
+            <span class="text-danger">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
@@ -149,7 +150,7 @@
             </select>
 
             @error('equipment_ids')
-            <span class="invalid-feedback" role="alert">
+            <span class="text-danger">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
@@ -163,7 +164,7 @@
             <textarea id="notes" type="text" class="form-control @error('notes') is-invalid @enderror" name="notes">{{ old('notes') }}</textarea>
 
             @error('notes')
-            <span class="invalid-feedback" role="alert">
+            <span class="text-danger">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror

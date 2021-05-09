@@ -1,9 +1,10 @@
 <div class="row">
     <div class="form-group mr-4" wire:model="carClassId">
-        <label for="car_class_id" class="text-md-right">{{ __('Class') }}</label>
+        <label for="car_class_id" class="text-md-right">{{ __('Car Class') }}</label>
 
         <div>
             <select id="car_class_id" class="form-control" name="car_class_id">
+                <option value="" selected disabled>select class</option>
                 @foreach($carClasses as $class)
                     <option {{ $class->id === old('car_class_id') ? 'selected' : '' }} value={{ $class->id }}>{{ $class->name }}</option>
                 @endforeach

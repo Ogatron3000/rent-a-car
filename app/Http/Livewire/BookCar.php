@@ -10,7 +10,7 @@ class BookCar extends Component
     public $locations;
     public $equipment;
 
-    public $carClassId = 1;
+    public $carClassId = '';
     public $fromDate = '';
     public $toDate = '';
     public $carId = '';

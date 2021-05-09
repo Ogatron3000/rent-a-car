@@ -15,14 +15,13 @@ class AvailabilityController extends Controller
     {
         $fromDate = $request->query('from_date') ?? Carbon::now()->toDateString();
         $toDate = $request->query('to_date') ?? "";
-
-        $cars = Car::queryAvailable($fromDate, $toDate)->get();
-
         $carClass = $request->query('car_class_id') ? CarClass::find($request->query('car_class_id')) : null;
+
         if ($carClass) {
-            // not the most efficient way!
-            $cars = $cars->where('car_class_id', $carClass->id);
+            $cars = Car::queryAvailable($fromDate, $toDate, $carClass->id)->get();
             $carClass = $carClass->name;
+        } else {
+            $cars = Car::queryAvailable($fromDate, $toDate)->get();
         }
 
         $carClasses = CarClass::all();

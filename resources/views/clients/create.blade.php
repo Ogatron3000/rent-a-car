@@ -18,7 +18,7 @@
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autofocus>
 
                                     @error('name')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -30,13 +30,14 @@
 
                                 <div class="col-md-6">
                                     <select id="country_id" class="form-control" name="country_id" required>
+                                        <option value="" selected disabled>select country</option>
                                         @foreach($countries as $country)
                                             <option {{ $country->id === old('country') ? 'selected' : '' }} value={{ $country->id }}>{{ $country->name }}</option>
                                         @endforeach
                                     </select>
 
                                     @error('country_id')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -50,7 +51,7 @@
                                     <input id="passport" type="text" class="form-control @error('passport') is-invalid @enderror" name="passport" value="{{ old('passport') }}" required>
 
                                     @error('passport')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -64,7 +65,7 @@
                                     <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required>
 
                                     @error('phone')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -78,7 +79,7 @@
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
 
                                     @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -92,7 +93,7 @@
                                     <input id="first_reservation" type="date" class="form-control @error('first_reservation') is-invalid @enderror" name="first_reservation" value="{{ old('first_reservation') }}" required>
 
                                     @error('first_reservation')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -106,7 +107,7 @@
                                     <input id="last_reservation" type="date" class="form-control @error('last_reservation') is-invalid @enderror" name="last_reservation" value="{{ old('last_reservation') }}" required>
 
                                     @error('last_reservation')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -120,7 +121,7 @@
                                     <textarea id="notes" type="text" class="form-control @error('notes') is-invalid @enderror" name="notes">{{ old('notes') }}</textarea>
 
                                     @error('notes')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror

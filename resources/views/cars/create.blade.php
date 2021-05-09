@@ -18,7 +18,7 @@
                                     <input id="model" type="text" class="form-control @error('model') is-invalid @enderror" name="model" value="{{ old('model') }}" required autofocus>
 
                                     @error('model')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -32,7 +32,7 @@
                                     <input id="registration" type="text" class="form-control @error('registration') is-invalid @enderror" name="registration" value="{{ old('registration') }}" required>
 
                                     @error('registration')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -44,7 +44,8 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" name="year" required>
-                                        @for($year = (int)date('Y'); 1900 <= $year; $year--)
+                                        <option value="" selected disabled>select year</option>
+                                        @for($year = (int)date('Y'); 2000 <= $year; $year--)
                                             <option {{ $year === old('year') ? 'selected' : '' }} value={{ $year }}>
                                                 {{ $year }}
                                             </option>
@@ -52,7 +53,7 @@
                                     </select>
 
                                     @error('year')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -64,13 +65,14 @@
 
                                 <div class="col-md-6">
                                     <select id="car_class_id" class="form-control" name="car_class_id" required>
+                                        <option value="" selected disabled>select class</option>
                                         @foreach($carClasses as $class)
                                             <option {{ $class->id === old('car_class_id') ? 'selected' : '' }} value={{ $class->id }}>{{ $class->name }}</option>
                                         @endforeach
                                     </select>
 
                                     @error('car_class_id')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -82,6 +84,7 @@
 
                                 <div class="col-md-6">
                                     <select class="form-control" name="seats" required>
+                                        <option value="" selected disabled>select seats</option>
                                         @for($seat = 2; $seat <= 6; $seat++)
                                             <option {{ $seat === old('seat') ? 'selected' : '' }} value={{ $seat }}>
                                                 {{ $seat }}
@@ -90,7 +93,7 @@
                                     </select>
 
                                     @error('seats')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -109,7 +112,7 @@
                                     </div>
 
                                     @error('price')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -126,7 +129,7 @@
                                     </div>
 
                                     @error('photo')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -140,7 +143,7 @@
                                     <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required>{{ old('description') }}</textarea>
 
                                     @error('description')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
@@ -154,7 +157,7 @@
                                     <textarea id="notes" type="text" class="form-control @error('notes') is-invalid @enderror" name="notes">{{ old('notes') }}</textarea>
 
                                     @error('notes')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror

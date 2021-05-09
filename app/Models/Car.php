@@ -31,9 +31,15 @@ class Car extends Model
         return $this->reservations()->withTrashed();
     }
 
-    public static function queryAvailable($fromDate, $toDate)
+    public static function queryAvailable($fromDate, $toDate, $carClass="")
     {
-        return self::whereHas('reservations', function ($q) use ($fromDate, $toDate) {
+        $query = self::query();
+
+        if ($carClass) {
+            $query = $query->where('car_class_id', $carClass);
+        }
+
+        return $query->whereHas('reservations', function ($q) use ($fromDate, $toDate) {
             $q->where([
                 ['from_date', '>', $fromDate],
                 ['to_date', '>', $toDate],
