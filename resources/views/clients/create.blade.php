@@ -32,7 +32,7 @@
                                     <select id="country_id" class="form-control" name="country_id" required>
                                         <option value="" selected disabled>select country</option>
                                         @foreach($countries as $country)
-                                            <option {{ $country->id === old('country') ? 'selected' : '' }} value={{ $country->id }}>{{ $country->name }}</option>
+                                            <option {{ $country->id === (int) old('country_id') ? 'selected' : '' }} value={{ $country->id }}>{{ $country->name }}</option>
                                         @endforeach
                                     </select>
 
@@ -62,7 +62,7 @@
                                 <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required>
+                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}">
 
                                     @error('phone')
                                     <span class="text-danger">
@@ -79,34 +79,6 @@
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
 
                                     @error('email')
-                                    <span class="text-danger">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="first_reservation" class="col-md-4 col-form-label text-md-right">{{ __('First Reservation') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="first_reservation" type="date" class="form-control @error('first_reservation') is-invalid @enderror" name="first_reservation" value="{{ old('first_reservation') }}" required>
-
-                                    @error('first_reservation')
-                                    <span class="text-danger">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="last_reservation" class="col-md-4 col-form-label text-md-right">{{ __('Last Reservation') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="last_reservation" type="date" class="form-control @error('last_reservation') is-invalid @enderror" name="last_reservation" value="{{ old('last_reservation') }}" required>
-
-                                    @error('last_reservation')
                                     <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>

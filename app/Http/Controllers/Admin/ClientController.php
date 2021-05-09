@@ -28,6 +28,7 @@ class ClientController extends Controller
 
     public function store(StoreClientRequest $request)
     {
+        dd(4);
         $client = Client::create($request->validated());
 
         return redirect($client->path());

@@ -26,12 +26,9 @@ class StoreClientRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'country_id' => ['required'],
-            'passport' => ['required', 'string', 'unique:users'],
-            'phone' => ['nullable', 'string', 'unique:clients'],
-            'email' => ['nullable', 'required', 'string', 'email', 'max:255', 'unique:users'],
-            'first_reservation' => ['required', 'date'],
-            'last_reservation' => ['required', 'date'],
-            'registered' => ['required', 'boolean'],
+            'passport' => ['required', 'alpha_num', 'min:6', 'max:9','unique:clients'],
+            'phone' => ['nullable', 'integer', 'min:9', 'max: 14', 'unique:clients'],
+            'email' => ['required', 'required', 'string', 'email', 'max:255', 'unique:clients'],
             'notes' => ['nullable', 'string'],
         ];
     }

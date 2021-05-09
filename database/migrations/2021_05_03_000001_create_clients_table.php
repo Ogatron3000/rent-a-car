@@ -19,7 +19,7 @@ class CreateClientsTable extends Migration
             $table->foreignId('country_id')->constrained();
             $table->string('passport');
             $table->string('email');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->date('first_reservation')->nullable();
             $table->date('last_reservation')->nullable();
             $table->foreignId('user_id')->nullable()->constrained();

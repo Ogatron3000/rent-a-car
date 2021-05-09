@@ -25,7 +25,7 @@ class StoreCarRequest extends FormRequest
     {
         return [
             'model' => ['required', 'string', 'max:255'],
-            'registration' => ['required', 'string', 'max:255', 'unique:cars'],
+            'registration' => ['required', 'string', 'regex:/^[A-Z]{2}-[A-Z]{2}\d{3}$/', 'max:255', 'unique:cars'],
             'year' => ['required', 'date_format:Y'],
             'car_class_id' => ['required'],
             'seats' => ['required', 'integer'],
