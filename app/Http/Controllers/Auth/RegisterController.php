@@ -88,17 +88,24 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        Client::create([
-            'name' => $data['name'],
-            'country_id' => $data['country_id'],
-            'passport' => $data['passport'],
-            'phone' => $data['phone'],
-            'email' => $data['email'],
-            'first_reservation' => null,
-            'last_reservation' => null,
-            'user_id' => $user->id,
-            'notes' => null
-        ]);
+        // check if user was a client before registering
+        $client = Client::firstWhere('passport', $data['passport']);
+
+        if ($client) {
+            $client->user_id = $user->id;
+        } else {
+            Client::create([
+                'name' => $data['name'],
+                'country_id' => $data['country_id'],
+                'passport' => $data['passport'],
+                'phone' => $data['phone'],
+                'email' => $data['email'],
+                'first_reservation' => null,
+                'last_reservation' => null,
+                'user_id' => $user->id,
+                'notes' => null
+            ]);
+        }
 
         return $user;
     }

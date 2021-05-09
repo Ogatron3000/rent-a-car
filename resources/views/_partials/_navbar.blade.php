@@ -6,7 +6,7 @@
             <ul class="navbar-nav ml-auto">
                 @auth
                     @if(auth()->user()->role === 'admin')
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.reservations.index') }}">Dashboard</a></li>
                     @endif
                 @endauth
                     <li class="nav-item"><a class="nav-link" href="{{ route('reservations.index') }}">Reservations</a></li>

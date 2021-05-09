@@ -7,24 +7,24 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                            Clients
-                        </a>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="{{ route('admin.reservations.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Reservations
                         </a>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="{{ route('admin.clients.index') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            Clients
+                        </a>
+                        <a class="nav-link" href="{{ route('admin.cars.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
                             Cars
                         </a>
+                        <a class="nav-link" href="#">
+                            <div class="sb-nav-link-icon"><i class="fas fa-search"></i></div>
+                            Search
+                        </a>
                     </div>
                 </div>
-                {{--<div class="sb-sidenav-footer">--}}
-                {{--    <div class="small">Logged in as:</div>--}}
-                {{--    Start Bootstrap--}}
-                {{--</div>--}}
             </nav>
         </div>
         <div id="layoutSidenav_content">
@@ -33,7 +33,7 @@
 
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid text-center small">
-                    <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                    <div class="text-muted">Copyright &copy; Brm Brm Car 2021</div>
                 </div>
             </footer>
         </div>

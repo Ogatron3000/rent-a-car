@@ -39,8 +39,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
 
-        Route::view('/', 'dashboard')->name('dashboard');
-
         Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
         Route::get('/cars/create', [CarController::class, 'create'])->name('cars.create');
         Route::post('/cars/store', [CarController::class, 'store'])->name('cars.store');
