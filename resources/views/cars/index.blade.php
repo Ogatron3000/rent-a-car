@@ -44,7 +44,7 @@
                                     <td>{{ $car->seats }}</td>
                                     <td>{{ $car->price }}</td>
                                     <td><img src="{{ asset($car->photo) }}" style="height: 100px; width: 175px" alt="car" /></td>
-                                    <td>{{ $car->notes ?? '/' }}</td>
+                                    <td>{{ $car->notes ? 'Yes' : 'No' }}</td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="{{ $car->path() }}">Details</a>

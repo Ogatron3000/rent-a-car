@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreReservationRequest;
 use App\Http\Requests\Admin\UpdateReservationRequest;
 use App\Models\Car;
+use App\Models\CarClass;
 use App\Models\Client;
 use App\Models\Equipment;
 use App\Models\Location;
@@ -25,12 +26,12 @@ class ReservationController extends Controller
 
     public function create()
     {
-        $clients = Client::all();
         $cars = Car::all();
+        $carClasses = CarClass::all();
         $locations = Location::all();
         $equipment = Equipment::all();
 
-        return view('reservations.admin.create', compact('clients', 'cars', 'locations', 'equipment'));
+        return view('reservations.admin.create', compact('cars', 'carClasses', 'locations', 'equipment'));
     }
 
     public function store(StoreReservationRequest $request)
@@ -38,6 +39,14 @@ class ReservationController extends Controller
         $validated = $request->validated();
 
         $validated['price'] = $this->calculatePrice($validated, $request->get('equipment_ids', []));
+
+        $client = Client::where('user_id', $validated['passport'])->firstOrFail();
+        $client->update([
+            'first_reservation' => $client->first_reservation ?? \Carbon\Carbon::now()->toDateString(),
+            'last_reservation'  => Carbon::now()->toDateString(),
+        ]);
+        $validated['passport'] = $client->id;
+        unset($validated['passport']);
 
         Car::checkAvailability($validated['car_id'], $validated['from_date'], $validated['to_date']);
 
@@ -55,12 +64,12 @@ class ReservationController extends Controller
 
     public function edit(Reservation $reservation)
     {
-        $clients = Client::all();
         $cars = Car::all();
+        $carClasses = CarClass::all();
         $locations = Location::all();
         $equipment = Equipment::all();
 
-        return view('reservations.admin.edit', compact('reservation', 'clients', 'cars', 'locations', 'equipment'));
+        return view('reservations.admin.edit', compact('reservation', 'cars', 'carClasses', 'locations', 'equipment'));
     }
 
     public function update(UpdateReservationRequest $request, Reservation $reservation)
@@ -68,6 +77,10 @@ class ReservationController extends Controller
         $validated = $request->validated();
 
         $validated['price'] = $this->calculatePrice($validated, $request->get('equipment_ids', []));
+
+        $client = Client::where('passport', $validated['passport'])->firstOrFail();
+        $validated['client_id'] = $client->id;
+        unset($validated['passport']);
 
         Car::checkAvailability($validated['car_id'], $validated['from_date'], $validated['to_date']);
 
@@ -81,7 +94,7 @@ class ReservationController extends Controller
 
     public function destroy(Reservation $reservation)
     {
-        $reservation->delete();
+        $reservation->forceDelete();
 
         return redirect(route('reservations.admin.index'));
     }
@@ -94,9 +107,7 @@ class ReservationController extends Controller
         $price = $days * $carPrice;
 
         // add equipment price to total price
-        foreach ($equipment_ids as $id) {
-            $price += Equipment::findOrFail($id)->price;
-        }
+        $price += Equipment::findMany($equipment_ids)->sum('price');
 
         return $price;
     }

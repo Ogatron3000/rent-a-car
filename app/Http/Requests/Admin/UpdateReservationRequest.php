@@ -24,7 +24,7 @@ class UpdateReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'client_id' => ['required'],
+            'passport' => ['required', 'exists:clients,passport'],
             'car_id' => ['required'],
             'from_date' => ['required', 'date', 'after_or_equal:today', 'before:to_date'],
             'to_date' => ['required', 'date', 'after:today', 'after:from_date'],

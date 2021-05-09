@@ -6,18 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="24212766-6205-47bc-870d-5b94e58d34d2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_partials/_navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_partials/_navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cars/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cars/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cars/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cars/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/StoreReservationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/StoreReservationRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/UpdateReservationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/UpdateReservationRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/cars/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cars/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cars/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cars/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/clients/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/clients/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/clients/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/clients/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/clients/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/clients/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/clients/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/clients/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reservations/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservations/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/book-car-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/book-car-edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reservations/admin/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservations/admin/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reservations/admin/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservations/admin/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reservations/admin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservations/admin/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reservations/admin/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservations/admin/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/reservations/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservations/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reservations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservations/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +201,8 @@
       <workItem from="1620481683247" duration="58000" />
       <workItem from="1620481759096" duration="102000" />
       <workItem from="1620481877752" duration="122000" />
-      <workItem from="1620482017647" duration="13142000" />
+      <workItem from="1620482017647" duration="13832000" />
+      <workItem from="1620550660625" duration="6098000" />
     </task>
     <servers />
   </component>

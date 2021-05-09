@@ -40,7 +40,7 @@
                                     <td>{{ $client->email }}</td>
                                     <td>{{ $client->first_reservation }}</td>
                                     <td>{{ $client->last_reservation }}</td>
-                                    <td>{{ $client->notes ?? '/' }}</td>
+                                    <td>{{ $client->notes ? 'Yes' : 'No' }}</td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="{{ $client->path() }}">Details</a>

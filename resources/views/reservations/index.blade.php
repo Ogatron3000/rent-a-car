@@ -27,6 +27,7 @@
                                     <th>End</th>
                                     <th>Equipment</th>
                                     <th>Price</th>
+                                    <th>Notes</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -50,6 +51,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $reservation->price }}</td>
+                                        <td>{{ $reservation->notes ? 'Yes' : 'No' }}</td>
                                         <td>
                                             @if($reservation->from_date > \Carbon\Carbon::now()->toDateString())
                                                 <div class="d-flex">

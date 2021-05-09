@@ -40,7 +40,7 @@ class ReservationController extends Controller
 
         $validated['price'] = $this->calculatePrice($validated, $request->get('equipment_ids', []));
 
-        $client = Client::where('user_id', auth()->id())->first();
+        $client = Client::where('user_id', auth()->id())->firstOrFail();
         $client->update([
             'first_reservation' => $client->first_reservation ?? Carbon::now()->toDateString(),
             'last_reservation'  => Carbon::now()->toDateString(),
@@ -84,7 +84,6 @@ class ReservationController extends Controller
         $validated['price'] = $this->calculatePrice($validated, $request->get('equipment_ids', []));
 
         $client = Client::where('user_id', auth()->id())->first();
-        $client->update(['last_reservation'  => Carbon::now()->toDateString()]);
         $validated['client_id'] = $client->id;
 
         Car::checkAvailability($validated['car_id'], $validated['from_date'], $validated['to_date']);
