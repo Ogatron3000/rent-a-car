@@ -79,6 +79,7 @@
                     </div>
                 </div>
             </div>
+            {{ $reservations->links() }}
         </div>
     </section>
 @endsection

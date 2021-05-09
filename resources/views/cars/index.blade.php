@@ -63,6 +63,7 @@
                     </div>
                 </div>
             </div>
+            {{ $cars->links() }}
         </div>
     </section>
 @endsection

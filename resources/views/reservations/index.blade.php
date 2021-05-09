@@ -80,6 +80,7 @@
                     </div>
                 @endif
             </div>
+            {{ $reservations->links() }}
         </div>
     </section>
     @include('_partials._footer')
