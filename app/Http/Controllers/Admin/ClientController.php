@@ -14,7 +14,7 @@ class ClientController extends Controller
 
     public function index()
     {
-        $clients = Client::paginate(10);
+        $clients = Client::with('country')->paginate(10);
 
         return view('clients.index', compact('clients'));
     }
@@ -28,7 +28,6 @@ class ClientController extends Controller
 
     public function store(StoreClientRequest $request)
     {
-        dd(4);
         $client = Client::create($request->validated());
 
         return redirect($client->path());

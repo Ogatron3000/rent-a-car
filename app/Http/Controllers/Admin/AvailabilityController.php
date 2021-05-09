@@ -18,10 +18,10 @@ class AvailabilityController extends Controller
         $carClass = $request->query('car_class_id') ? CarClass::find($request->query('car_class_id')) : null;
 
         if ($carClass) {
-            $cars = Car::queryAvailable($fromDate, $toDate, $carClass->id)->get();
+            $cars = Car::queryAvailable($fromDate, $toDate, $carClass->id)->with('carClass')->paginate(10);
             $carClass = $carClass->name;
         } else {
-            $cars = Car::queryAvailable($fromDate, $toDate)->get();
+            $cars = Car::queryAvailable($fromDate, $toDate)->with('carClass')->paginate(10);
         }
 
         $carClasses = CarClass::all();

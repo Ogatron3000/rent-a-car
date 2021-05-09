@@ -19,7 +19,7 @@ class ReservationController extends Controller
 
     public function index()
     {
-        $reservations = Reservation::withTrashed()->orderBy('from_date', 'asc')->paginate(10);
+        $reservations = Reservation::with('client', 'car', 'startLocation', 'endLocation', 'equipment')->withTrashed()->orderBy('from_date', 'asc')->paginate(10);
 
         return view('reservations.admin.index', compact('reservations'));
     }

@@ -6,19 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="24212766-6205-47bc-870d-5b94e58d34d2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/StoreClientRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/StoreClientRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/UpdateClientRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/UpdateClientRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_01_111359_create_countries_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_01_111359_create_countries_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/CarClassSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CarClassSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/CarSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CarSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/ClientSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/ClientSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/CountrySeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CountrySeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/EquipmentSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/EquipmentSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/LocationSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/LocationSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/ReservationSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/ReservationSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AvailabilityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AvailabilityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CarController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +194,7 @@
       <workItem from="1620481759096" duration="102000" />
       <workItem from="1620481877752" duration="122000" />
       <workItem from="1620482017647" duration="13832000" />
-      <workItem from="1620550660625" duration="32712000" />
+      <workItem from="1620550660625" duration="33256000" />
     </task>
     <servers />
   </component>

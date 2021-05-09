@@ -19,7 +19,11 @@ class ReservationController extends Controller
     public function index()
     {
         $client = Client::where('user_id', auth()->id())->first();
-        $reservations = Reservation::where('client_id', $client->id ?? null)->withTrashed()->orderBy('from_date', 'asc')->paginate(10);
+        $reservations = Reservation::where('client_id', $client->id ?? null)
+            ->with('car', 'startLocation', 'endLocation', 'equipment')
+            ->withTrashed()
+            ->orderBy('from_date', 'asc')
+            ->paginate(10);
 
         return view('reservations.index', compact('reservations'));
     }
