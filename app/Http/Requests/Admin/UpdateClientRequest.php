@@ -27,7 +27,7 @@ class UpdateClientRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'country_id' => ['required'],
             'passport' => ['required', 'alpha_num', 'min:6', 'max:9', 'unique:clients,passport,' . $this->client['id']],
-            'phone' => ['nullable', 'integer', 'min:9', 'max: 14', 'unique:clients,phone,' . $this->client['id']],
+            'phone' => ['nullable', 'string', 'min:9', 'max: 14', 'unique:clients,phone,' . $this->client['id']],
             'email' => ['required', 'required', 'string', 'email', 'max:255', 'unique:clients,email,' . $this->client['id']],
             'notes' => ['nullable', 'string'],
         ];

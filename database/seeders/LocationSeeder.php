@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Location;
 
 class LocationSeeder extends Seeder
 {
@@ -11,8 +12,19 @@ class LocationSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public static function run()
     {
-        //
+        $items = [
+            ['name' => 'Podgorica Airport'],
+            ['name' => 'Tivat Airport'],
+            ['name' => 'Belgrade Airport'],
+            ['name' => 'Niš Airport'],
+            ['name' => 'Banja Luka Airport'],
+            ['name' => 'Mostar Airport'],
+        ];
+
+        foreach ($items as $item) {
+            Location::create($item);
+        }
     }
 }

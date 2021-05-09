@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Equipment;
 
 class EquipmentSeeder extends Seeder
 {
@@ -11,8 +12,16 @@ class EquipmentSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public static function run()
     {
-        //
+        $items = [
+            ['name' => 'Baby Seat', 'price' => 15],
+            ['name' => 'GPS', 'price' => 10],
+            ['name' => 'Spare Tire', 'price' => 20],
+        ];
+
+        foreach ($items as $item) {
+            Equipment::create($item);
+        }
     }
 }
